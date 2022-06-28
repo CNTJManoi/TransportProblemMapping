@@ -10,11 +10,12 @@ namespace TransportAlgorithms.Algorithms
         private double[] Shops;
         private double[,] Solution;
         private bool isFound;
-        public Potentials(double[,] Matr, double[] Suppliers, double[] Shops)
+        public Potentials(double[,] Matr, double[] Suppliers, double[] Shops, double[,] Solut)
         {
             Matrix = Matr;
             this.Suppliers = Suppliers;
             this.Shops = Shops;
+            Solution = Solut;
             Clear();
         }
         public void Clear()
