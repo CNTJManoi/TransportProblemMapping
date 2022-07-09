@@ -1,12 +1,143 @@
-﻿<Window x:Class="TransportProblemMapping.MainMenu"
+﻿<Window x:Name="Window" x:Class="TransportProblemMapping.MainMenu"
+        xmlns:pg="clr-namespace:TransportProblemMapping.Views"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportProblemMapping"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="1000" MinWidth="1000" MinHeight="700" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <materialDesign:MathConverter x:Key="MathConverter" />
+    </Window.Resources>
     <Grid>
-        
+        <materialDesign:DrawerHost
+            IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+            <StackPanel>
+                <materialDesign:ColorZone
+                    Mode="PrimaryLight"
+                    Padding="16"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2">
+                    <DockPanel>
+                        <ToggleButton x:Name="MenuToggleButton"
+                                      IsChecked="False"
+                                      Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Foreground="White" />
+                        <TextBlock Name="GlobalText"
+                                   Text="Пожилой навигатор"
+                                   FontSize="26"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,39,0" HorizontalAlignment="Center" Foreground="White" />
+                    </DockPanel>
+
+                </materialDesign:ColorZone>
+                <materialDesign:Transitioner x:Name="Transitioner" SelectedIndex="0"
+                                             Height="{Binding ActualHeight, ConverterParameter=-100, Converter={StaticResource MathConverter}, ElementName=Window, Mode=OneWay}"
+                                             VerticalAlignment="Top">
+                    <materialDesign:TransitionerSlide>
+                        <pg:MainPage x:Name="Main" Width="Auto"
+                                 Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
+                        <pg:MapPage x:Name="MapP" Width="Auto"
+                                         Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:0.4" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4"
+                                                             OffsetTime="0:0:0.9" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <pg:HelpPage x:Name="HelpPage" Width="Auto"
+                                     Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
+                        <pg:AboutPage x:Name="AboutPage" Width="Auto"
+                                      Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                </materialDesign:Transitioner>
+            </StackPanel>
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <DockPanel MinWidth="150" Background="White">
+                    <ToggleButton
+                        Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                        DockPanel.Dock="Top"
+                        HorizontalAlignment="Right"
+                        Margin="16"
+                        IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                    <StackPanel DockPanel.Dock="Top">
+                        <Button Name="HomeButton" FontSize="18" Height="Auto"
+                                Foreground="Black"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
+                                HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Home" VerticalAlignment="Stretch" Width="30" Height="30"
+                                                         Margin="0,0,10,0" />
+                                <TextBlock Text="Главное меню" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="LearnButton" FontSize="18" Height="Auto"
+                                Foreground="Black"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
+                                HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="School" VerticalAlignment="Stretch" Width="30"
+                                                         Height="30" Margin="0,0,10,0" />
+                                <TextBlock Text="Карта" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="TestButton" FontSize="18" Height="Auto"
+                                Foreground="Black"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
+                                HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Book" VerticalAlignment="Stretch" Width="30" Height="30"
+                                                         Margin="0,0,10,0" />
+                                <TextBlock Text="Помощь" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="HelpButton" FontSize="18" Height="Auto"
+                                Foreground="Black"
+                                 
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
+                                HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Cursor="Hand">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Help" VerticalAlignment="Stretch" Width="30" Height="30"
+                                                         Margin="0,0,10,0" />
+                                <TextBlock Text="Настройки" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="PointerButton" FontSize="18" Height="Auto"
+                                Foreground="Black"
+                                 
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
+                                HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="CursorPointer" VerticalAlignment="Stretch"
+                                                         Width="30" Height="30" Margin="0,0,10,0" />
+                                <TextBlock Text="Об авторах" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        
+                    </StackPanel>
+                    <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                Margin="0,0,0,10">
+                        <TextBlock TextWrapping="Wrap" Text="Версия 1.0 Release" Foreground="#CC424242"
+                                   VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+        </materialDesign:DrawerHost>
+
     </Grid>
 </Window>

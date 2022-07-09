@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="TransportProblemMapping.Views.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TransportProblemMapping.Views"
+             mc:Ignorable="d" Width="800" Height="550">
+    <Grid>
+        <StackPanel>
+            <DockPanel Height="{Binding ActualHeight, ElementName=UserControl, Mode=OneWay}">
+                <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
+                    <TextBlock
+                        Style="{StaticResource MaterialDesignHeadline3TextBlock}"
+                        Text="Приветствуем!" HorizontalAlignment="Center" />
+                    <TextBlock
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                        Text="Программа осуществляет рассчет маршрутов путем решения транспортной задачи на карте."
+                        Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+                    <TextBlock
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                        Text="Для перехода в режим карты вызовите боковое меню нажатием кнопки в левом верхнем углу и перейдите в соответствующее меню" Margin="10,20,10,0" TextWrapping="Wrap"
+                        TextAlignment="Justify" />
+                    <TextBlock
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                        Text="Реализован поиск решения путем поиска опорного плана методом северо-западного угла и нахождения наилучшего решения методом потенциалов."
+                        Margin="10,20,10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+                </StackPanel>
+                <!--<StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                        Text="Желаем удачи в освоении данной области знаний!" TextWrapping="Wrap"
+                        TextAlignment="Justify" />
+                </StackPanel>-->
+
+            </DockPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
