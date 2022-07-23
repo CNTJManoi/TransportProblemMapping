@@ -13,11 +13,10 @@ namespace TransportProblemMapping.Markers
     /// </summary>
     public partial class CustomMarkerRed
     {
-        Popup Popup;
-        Label Label;
-        //Label Label2;
-        GMapMarker Marker;
-        MapPage MainWindow;
+        Popup Popup { get; set; }
+        public Label Label { get; private set; }
+        public GMapMarker Marker { get; private set; }
+        MapPage MainWindow { get; set; }
 
         public CustomMarkerRed(MapPage window, GMapMarker marker, string title, string data)
         {
@@ -28,7 +27,6 @@ namespace TransportProblemMapping.Markers
             title += "\n" + data;
             Popup = new Popup();
             Label = new Label();
-            //Label2 = new Label();
 
             Loaded += CustomMarkerDemo_Loaded;
             SizeChanged += CustomMarkerDemo_SizeChanged;
@@ -45,19 +43,9 @@ namespace TransportProblemMapping.Markers
                 Label.BorderBrush = Brushes.WhiteSmoke;
                 Label.BorderThickness = new Thickness(2);
                 Label.Padding = new Thickness(5);
-                Label.FontSize = 22;
+               Label.FontSize = 22;
                 Label.Content = title;
             }
-            //Popup.Placement = PlacementMode.Mouse;
-            //{
-            //    Label.Background = Brushes.Blue;
-            //    Label.Foreground = Brushes.White;
-            //    Label.BorderBrush = Brushes.WhiteSmoke;
-            //    Label.BorderThickness = new Thickness(2);
-            //    Label.Padding = new Thickness(5);
-            //    Label.FontSize = 18;
-            //    Label.Content = data;
-            //}
             Popup.Child = Label;
         }
 
