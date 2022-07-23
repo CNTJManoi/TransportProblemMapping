@@ -5,20 +5,20 @@ namespace TransportAlgorithms.Algorithms
 {
     public class Potentials : IAlgorithm
     {
-        private Point[] Allowed; // хранит координаты клеток, в которых есть груз
+        private Point[] Allowed;
         private bool isFound;
-        private readonly double[,] Matrix;
-        private double[] Shops;
+        private double[,] Matrix;
+        private int[] Shops;
         private double[,] Solution;
-        private double[] Suppliers;
+        private int[] Suppliers;
 
-        public Potentials(double[,] Matr, double[] Suppliers, double[] Shops, double[,] Solut)
+        public Potentials(double[,] Matr, int[] Suppliers, int[] Shops, double[,] Solut)
         {
             Matrix = Matr;
             this.Suppliers = Suppliers;
             this.Shops = Shops;
             Solution = Solut;
-            Clear();
+            isFound = false;
         }
 
         public void Clear()

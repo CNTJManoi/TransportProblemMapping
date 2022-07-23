@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1000" MinWidth="1000" MinHeight="700"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Window.Resources>
         <materialDesign:MathConverter x:Key="MathConverter" />
     </Window.Resources>

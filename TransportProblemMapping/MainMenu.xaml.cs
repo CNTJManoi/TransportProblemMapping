@@ -17,5 +17,10 @@ namespace TransportProblemMapping
             Transitioner.SelectedIndex = 1;
             MenuToggleButton.IsChecked = false;
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
     }
 }

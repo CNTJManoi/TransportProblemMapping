@@ -215,7 +215,12 @@
   <ItemGroup>
     <Resource Include="Markers\red-dot.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TransportAlgorithms\TransportAlgorithms.csproj">
+      <Project>{c06d55e9-6102-4103-b712-4d40596f3150}</Project>
+      <Name>TransportAlgorithms</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

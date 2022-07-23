@@ -5,12 +5,12 @@ namespace TransportAlgorithms.Algorithms
     public class NorthWest : IAlgorithm
     {
         private bool isFound;
-        private readonly double[,] Matrix;
-        private readonly double[] Shops;
+        private double[,] Matrix;
+        private int[] Shops;
         private double[,] Solution;
-        private readonly double[] Suppliers;
+        private int[] Suppliers;
 
-        public NorthWest(double[,] Matr, double[] Suppliers, double[] Shops)
+        public NorthWest(double[,] Matr, int[] Suppliers, int[] Shops)
         {
             Matrix = Matr;
             this.Suppliers = Suppliers;
@@ -59,9 +59,9 @@ namespace TransportAlgorithms.Algorithms
             return Solution;
         }
 
-        private bool isEmpty(double[] arr)
+        private bool isEmpty(int[] arr)
         {
-            return Array.TrueForAll(arr, delegate(double x) { return x == 0; });
+            return Array.TrueForAll(arr, delegate(int x) { return x == 0; });
         }
     }
 }
