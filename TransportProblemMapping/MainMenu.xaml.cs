@@ -24,5 +24,11 @@ namespace TransportProblemMapping
         {
             InitializeComponent();
         }
+
+        private void MapButton_Click(object sender, RoutedEventArgs e)
+        {
+            Transitioner.SelectedIndex = 1;
+            MenuToggleButton.IsChecked = false;
+        }
     }
 }
