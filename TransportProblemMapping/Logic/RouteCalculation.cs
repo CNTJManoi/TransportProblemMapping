@@ -1,20 +1,17 @@
-﻿using GMap.NET;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using GMap.NET;
 using GMap.NET.WindowsPresentation;
 using Itinero;
 using Itinero.Osm.Vehicles;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TransportProblemMapping.Models;
 
 namespace TransportProblemMapping.Logic
 {
-    class RouteCalculation
+    internal class RouteCalculation
     {
-        public RouteMapping GetRoute(Single sh1, Single dl1, Single sh2, Single dl2)
+        public RouteMapping GetRoute(float sh1, float dl1, float sh2, float dl2)
         {
             using (var stream = new FileInfo(@"Data\siberian-fed-district-latest.routerdb").Open(FileMode.Open))
             {
@@ -28,12 +25,13 @@ namespace TransportProblemMapping.Logic
 
                 var route = router.Calculate(profile, start, end);
 
-                List<PointLatLng> put = new List<PointLatLng>();
+                var put = new List<PointLatLng>();
                 foreach (var item in route.Shape)
                 {
-                    PointLatLng pt = new PointLatLng(Convert.ToDouble(item.Latitude), Convert.ToDouble(item.Longitude));
+                    var pt = new PointLatLng(Convert.ToDouble(item.Latitude), Convert.ToDouble(item.Longitude));
                     put.Add(pt);
                 }
+
                 var k = route.TotalDistance;
                 return new RouteMapping(new GMapRoute(put), route.TotalDistance);
             }

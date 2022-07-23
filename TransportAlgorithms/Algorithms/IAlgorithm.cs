@@ -1,25 +1,27 @@
-﻿
-namespace TransportAlgorithms.Algorithms
+﻿namespace TransportAlgorithms.Algorithms
 {
-    interface IAlgorithm
+    internal interface IAlgorithm
     {
         /// <summary>
-        /// Произвести рассчет решения по выбранному алгоритму
+        ///     Произвести рассчет решения по выбранному алгоритму
         /// </summary>
         /// <returns>Опорный план</returns>
         double[,] ReturnSolution();
+
         /// <summary>
-        /// Возвращает опорный план решенной ранее задачи. Если задача не была решена, то вовзращает null
+        ///     Возвращает опорный план решенной ранее задачи. Если задача не была решена, то вовзращает null
         /// </summary>
         /// <returns>Опорный план</returns>
         double[,] GetMatrixSolution();
+
         /// <summary>
-        /// Рассчитывает математическую модель решения
+        ///     Рассчитывает математическую модель решения
         /// </summary>
         /// <returns>Математическая модель цены</returns>
         double GetMathematicalModel();
+
         /// <summary>
-        /// Очищает все полученные решения
+        ///     Очищает все полученные решения
         /// </summary>
         void Clear();
     }

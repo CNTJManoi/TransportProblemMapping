@@ -1,9 +1,9 @@
-﻿using GMap.NET.WindowsPresentation;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using GMap.NET.WindowsPresentation;
 using TransportProblemMapping.Views;
 
 namespace TransportProblemMapping.Markers
@@ -13,11 +13,6 @@ namespace TransportProblemMapping.Markers
     /// </summary>
     public partial class CustomMarkerRed
     {
-        Popup Popup { get; set; }
-        public Label Label { get; private set; }
-        public GMapMarker Marker { get; private set; }
-        MapPage MainWindow { get; set; }
-
         public CustomMarkerRed(MapPage window, GMapMarker marker, string title, string data)
         {
             InitializeComponent();
@@ -43,26 +38,28 @@ namespace TransportProblemMapping.Markers
                 Label.BorderBrush = Brushes.WhiteSmoke;
                 Label.BorderThickness = new Thickness(2);
                 Label.Padding = new Thickness(5);
-               Label.FontSize = 22;
+                Label.FontSize = 22;
                 Label.Content = title;
             }
             Popup.Child = Label;
         }
 
-        void CustomMarkerDemo_Loaded(object sender, RoutedEventArgs e)
+        private Popup Popup { get; }
+        public Label Label { get; }
+        public GMapMarker Marker { get; }
+        private MapPage MainWindow { get; }
+
+        private void CustomMarkerDemo_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Icon.Source.CanFreeze)
-            {
-                Icon.Source.Freeze();
-            }
+            if (Icon.Source.CanFreeze) Icon.Source.Freeze();
         }
 
-        void CustomMarkerDemo_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void CustomMarkerDemo_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Marker.Offset = new Point(-e.NewSize.Width / 2, -e.NewSize.Height);
         }
 
-        void CustomMarkerDemo_MouseMove(object sender, MouseEventArgs e)
+        private void CustomMarkerDemo_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed && IsMouseCaptured)
             {
@@ -71,29 +68,23 @@ namespace TransportProblemMapping.Markers
             }
         }
 
-        void CustomMarkerDemo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void CustomMarkerDemo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (!IsMouseCaptured)
-            {
-                Mouse.Capture(this);
-            }
+            if (!IsMouseCaptured) Mouse.Capture(this);
         }
 
-        void CustomMarkerDemo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void CustomMarkerDemo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (IsMouseCaptured)
-            {
-                Mouse.Capture(null);
-            }
+            if (IsMouseCaptured) Mouse.Capture(null);
         }
 
-        void MarkerControl_MouseLeave(object sender, MouseEventArgs e)
+        private void MarkerControl_MouseLeave(object sender, MouseEventArgs e)
         {
             Marker.ZIndex -= 10000;
             Popup.IsOpen = false;
         }
 
-        void MarkerControl_MouseEnter(object sender, MouseEventArgs e)
+        private void MarkerControl_MouseEnter(object sender, MouseEventArgs e)
         {
             Marker.ZIndex += 10000;
             Popup.IsOpen = true;

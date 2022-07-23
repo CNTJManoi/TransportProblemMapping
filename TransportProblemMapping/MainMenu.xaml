@@ -4,10 +4,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TransportProblemMapping"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000" MinWidth="1000" MinHeight="700" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="700" Width="1000" MinWidth="1000" MinHeight="700"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <materialDesign:MathConverter x:Key="MathConverter" />
     </Window.Resources>
@@ -36,11 +36,11 @@
                                              VerticalAlignment="Top">
                     <materialDesign:TransitionerSlide>
                         <pg:MainPage x:Name="Main" Width="Auto"
-                                 Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                                     Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
                         <pg:MapPage x:Name="MapP" Width="Auto"
-                                         Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                                    Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
@@ -82,7 +82,8 @@
                                 Foreground="Black"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
-                                HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Click="MapButton_Click">
+                                HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
+                                Click="MapButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="School" VerticalAlignment="Stretch" Width="30"
                                                          Height="30" Margin="0,0,10,0" />
@@ -104,7 +105,7 @@
                         </Button>
                         <Button Name="HelpButton" FontSize="18" Height="Auto"
                                 Foreground="Black"
-                                 
+
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Cursor="Hand">
@@ -117,7 +118,7 @@
                         </Button>
                         <Button Name="PointerButton" FontSize="18" Height="Auto"
                                 Foreground="Black"
-                                 
+
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
@@ -128,7 +129,7 @@
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        
+
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                                 Margin="0,0,0,10">

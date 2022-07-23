@@ -3,16 +3,19 @@ using System.Windows;
 
 namespace TransportAlgorithms.Algorithms
 {
-    class FindWay
+    internal class FindWay
     {
-        FindWay Father;
-        Point Root;
-        FindWay[] Childrens;
-        Point[] mAllowed;
-        Point Begining;
+        private readonly Point Begining;
+        private FindWay[] Childrens;
+
+        private readonly FindWay Father;
+
         //true - вниз/вверх
         //false - влево/вправо
-        bool flag;
+        private readonly bool flag;
+        private readonly Point[] mAllowed;
+        private Point Root;
+
         public FindWay(int x, int y, bool _flag, Point[] _mAllowed, Point _Beg, FindWay _Father)
         {
             Begining = _Beg;
@@ -21,11 +24,12 @@ namespace TransportAlgorithms.Algorithms
             mAllowed = _mAllowed;
             Father = _Father;
         }
-        public Boolean BuildTree()
+
+        public bool BuildTree()
         {
-            Point[] ps = new Point[mAllowed.Length];
-            int Count = 0;
-            for (int i = 0; i < mAllowed.Length; i++)
+            var ps = new Point[mAllowed.Length];
+            var Count = 0;
+            for (var i = 0; i < mAllowed.Length; i++)
                 if (flag)
                 {
                     if (Root.Y == mAllowed[i].Y)
@@ -33,20 +37,18 @@ namespace TransportAlgorithms.Algorithms
                         Count++;
                         ps[Count - 1] = mAllowed[i];
                     }
-
                 }
-                else
-                    if (Root.X == mAllowed[i].X)
+                else if (Root.X == mAllowed[i].X)
                 {
                     Count++;
                     ps[Count - 1] = mAllowed[i];
                 }
 
-            FindWay fwu = this;
+            var fwu = this;
             Childrens = new FindWay[Count];
             //Point[] ss = new Point[mAllowed.Length];
-            int k = 0;
-            for (int i = 0; i < Count; i++)
+            var k = 0;
+            for (var i = 0; i < Count; i++)
             {
                 if (ps[i] == Root) continue;
                 if (ps[i] == Begining)
@@ -56,20 +58,22 @@ namespace TransportAlgorithms.Algorithms
                         mAllowed[k] = fwu.Root;
                         fwu = fwu.Father;
                         k++;
-                    };
+                    }
+
+                    ;
                     for (; k < mAllowed.Length; k++) mAllowed[k] = new Point(-1, -1);
                     return true;
                 }
 
-                if (!Array.TrueForAll<Point>(ps, p => ((p.X == 0) && (p.Y == 0))))
+                if (!Array.TrueForAll(ps, p => p.X == 0 && p.Y == 0))
                 {
                     Childrens[i] = new FindWay((int)ps[i].X, (int)ps[i].Y, !flag, mAllowed, Begining, this);
-                    Boolean result = Childrens[i].BuildTree();
+                    var result = Childrens[i].BuildTree();
                     if (result) return true;
                 }
             }
+
             return false;
         }
-
     }
 }

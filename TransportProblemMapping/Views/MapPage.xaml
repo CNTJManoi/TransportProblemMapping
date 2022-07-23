@@ -1,12 +1,11 @@
 ﻿<UserControl x:Class="TransportProblemMapping.Views.MapPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TransportProblemMapping.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:controls="clr-namespace:TransportProblemMapping.Controls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800" FontFamily="Gotham Pro">
     <materialDesign:DialogHost Name="Dialog">
         <materialDesign:DialogHost.DialogContent>
@@ -24,47 +23,54 @@
 
         </materialDesign:DialogHost.DialogContent>
         <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="*"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="*" />
 
-        </Grid.ColumnDefinitions>
-        <controls:Map x:Name="MainMap" Grid.Column="1" Margin="10,10,10,10">
-
-        </controls:Map>
-        <StackPanel Margin="0,10,0,0">
-            <StackPanel x:Name="stackPanel" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5">
-                <TextBlock Text="Название фирмы/магазина" FontSize="16" FontFamily="Gotham Pro" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                <TextBox Name="NameCompany" FontSize="16" Cursor="Arrow" FontFamily="Gotham Pro"
-                         materialDesign:HintAssist.Hint="Наименование"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         VerticalAlignment="Center" Margin="0,5,0,0" ></TextBox>
-            </StackPanel>
-            <StackPanel x:Name="stackPanel1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}">
-                <TextBlock Text="Количество товара" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                <TextBox Name="CountProduct" FontSize="16" Cursor="Arrow"
-                         materialDesign:HintAssist.Hint="Количество"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         VerticalAlignment="Center" Margin="0,5,0,0" ></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
-                    <TextBlock Text="Тип точки" FontSize="16" FontFamily="Gotham Pro" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            </Grid.ColumnDefinitions>
+            <controls:Map x:Name="MainMap" Grid.Column="1" Margin="10,10,10,10" />
+            <StackPanel Margin="0,10,0,0">
+                <StackPanel x:Name="stackPanel" Orientation="Vertical" HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Margin="0,5,0,5">
+                    <TextBlock Text="Название фирмы/магазина" FontSize="16" FontFamily="Gotham Pro"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBox Name="NameCompany" FontSize="16" Cursor="Arrow" FontFamily="Gotham Pro"
+                             materialDesign:HintAssist.Hint="Наименование"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             VerticalAlignment="Center" Margin="0,5,0,0" />
+                </StackPanel>
+                <StackPanel x:Name="stackPanel1" Orientation="Vertical" HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Margin="0,5,0,5"
+                            Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}">
+                    <TextBlock Text="Количество товара" FontSize="16" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                    <TextBox Name="CountProduct" FontSize="16" Cursor="Arrow"
+                             materialDesign:HintAssist.Hint="Количество"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             VerticalAlignment="Center" Margin="0,5,0,0" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
+                    <TextBlock Text="Тип точки" FontSize="16" FontFamily="Gotham Pro" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
                     <ComboBox Name="TypePoint" FontSize="16" Margin="0,10,0,5" materialDesign:HintAssist.Hint="Тип">
                         <ComboBoxItem Content="Магазин" />
                         <ComboBoxItem Content="Склад" />
                     </ComboBox>
                 </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
-                <Grid>
-                    <Button
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        materialDesign:ButtonAssist.CornerRadius="25"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Start_Click">
-                    <TextBlock Text="Найти решение"></TextBlock>
-                    </Button>
-                </Grid>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
+                    <Grid>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            materialDesign:ButtonAssist.CornerRadius="25"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Click="Start_Click">
+                            <TextBlock Text="Найти решение" />
+                        </Button>
+                    </Grid>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
     </materialDesign:DialogHost>
 </UserControl>

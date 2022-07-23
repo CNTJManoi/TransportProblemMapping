@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using TransportAlgorithms.Algorithms;
+﻿using TransportAlgorithms.Algorithms;
 
 namespace TransportAlgorithms
 {
@@ -13,18 +7,16 @@ namespace TransportAlgorithms
         NorthWest,
         Potentials
     }
+
     public class TransportProblem
     {
         public double MathematicalPrice { get; private set; }
         public NorthWest NorthWest { get; private set; }
         public Potentials Potentials { get; private set; }
-        public TransportProblem()
-        {
 
-        }
         public double[,] FindSolution(double[,] Matrix, double[] Suppliers, double[] Shops, TypeAlgorithm ta)
         {
-            double[,] Solution = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
+            var Solution = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
             switch (ta)
             {
                 case TypeAlgorithm.NorthWest:
@@ -38,9 +30,8 @@ namespace TransportAlgorithms
                     Solution = Potentials.ReturnSolution();
                     MathematicalPrice = Potentials.GetMathematicalModel();
                     break;
-                default:
-                    break;
             }
+
             return Solution;
         }
     }
