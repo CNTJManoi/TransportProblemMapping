@@ -7,7 +7,7 @@ namespace TransportAlgorithms.Algorithms
     {
         private Point[] Allowed;
         private bool isFound;
-        private double[,] Matrix;
+        private readonly double[,] Matrix;
         private int[] Shops;
         private double[,] Solution;
         private int[] Suppliers;

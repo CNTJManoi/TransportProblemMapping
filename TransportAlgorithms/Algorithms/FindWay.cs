@@ -6,7 +6,6 @@ namespace TransportAlgorithms.Algorithms
     internal class FindWay
     {
         private readonly Point Begining;
-        private FindWay[] Childrens;
 
         private readonly FindWay Father;
 
@@ -14,6 +13,7 @@ namespace TransportAlgorithms.Algorithms
         //false - влево/вправо
         private readonly bool flag;
         private readonly Point[] mAllowed;
+        private FindWay[] Childrens;
         private Point Root;
 
         public FindWay(int x, int y, bool _flag, Point[] _mAllowed, Point _Beg, FindWay _Father)
