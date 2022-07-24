@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    
+    <v:String x:Key="NameProgram">Route54</v:String>
+    
+    <v:String x:Key="HelloMessage">Welcome!</v:String>
+    <v:String x:Key="MainMessage1">The program calculates routes by solving transport problems on the map.</v:String>
+    <v:String x:Key="MainMessage2">To switch to map mode, call up the side menu by pressing the button in the upper left corner and go to the corresponding menu.</v:String>
+    <v:String x:Key="MainMessage3">Solution search by finding a reference plan by the northwest corner method and finding the best solution by the potentials method is implemented.</v:String>
+    
+    <v:String x:Key="MainButton">Main menu</v:String>
+    <v:String x:Key="MapButton">Map</v:String>
+    <v:String x:Key="InfoButton">Information</v:String>
+    <v:String x:Key="SettingsButton">Settings</v:String>
+    <v:String x:Key="AboutButton">About authors</v:String>
+    <v:String x:Key="Version">v1.0 Release</v:String>
+
+    <v:String x:Key="Naming">Company/store name</v:String>
+    <v:String x:Key="NamingButton">Title</v:String>
+    <v:String x:Key="Quantity">Quantity of goods</v:String>
+    <v:String x:Key="QuantityButton">Quantity</v:String>
+    <v:String x:Key="Type">Type of point</v:String>
+    <v:String x:Key="TypeShop">Shop</v:String>
+    <v:String x:Key="TypeButton">Type</v:String>
+    <v:String x:Key="TypeWarehouse">Warehouse</v:String>
+    <v:String x:Key="Search">Find a solution</v:String>
+    <v:String x:Key="Clear">Clean up</v:String>
+    <v:String x:Key="Solution">Solution</v:String>
+
+    <v:String x:Key="Shop">Shop</v:String>
+    <v:String x:Key="Warehouse">Warehouse</v:String>
+    <v:String x:Key="Product">Product</v:String>
+
+    <v:String x:Key="Info1">From the warehouse </v:String>
+    <v:String x:Key="Info2"> in store </v:String>
+    <v:String x:Key="Info3"> units of the product.</v:String>
+
+    <v:String x:Key="Mathematical">The mathematical model: </v:String>
+
+    <v:String x:Key="Error1">Add store points! There must be at least 2.</v:String>
+    <v:String x:Key="Error2">Add warehouse points! There must be at least 2.</v:String>
+    <v:String x:Key="Error3">Enter company/store name!</v:String>
+    <v:String x:Key="Error4">Enter the number of products!</v:String>
+    <v:String x:Key="Error5">Select the point type!</v:String>
+
+    <v:String x:Key="Confirm">Ok</v:String>
+    <v:String x:Key="CalculationBegin">The route calculations are in progress. Please wait.</v:String>
+</ResourceDictionary>

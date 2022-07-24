@@ -16,13 +16,13 @@ namespace TransportProblemMapping.Views
 {
     public partial class MapPage : UserControl
     {
-        #region Поля
+        #region Fields
 
         private Thread calcThread;
 
         #endregion
 
-        #region Свойства
+        #region Properties
         private RouteCalculation Rc { get; }
         private PointLatLng PointStart { get; }
         private List<GMapMarker> Markers { get; }
@@ -104,16 +104,16 @@ namespace TransportProblemMapping.Views
             this.Dispatcher.Invoke(() =>
             {
                 shopMarkers = new List<GMapMarker>(Markers
-                    .Where(x => ((CustomMarkerRed)x.Shape).Label.Content.ToString().Contains("Магазин")).ToList());
+                    .Where(x => ((CustomMarkerRed)x.Shape).Label.Content.ToString().Contains(ReturnString("Shop"))).ToList());
                 warehouseMarkers = new List<GMapMarker>(Markers
-                    .Where(x => ((CustomMarkerRed)x.Shape).Label.Content.ToString().Contains("Склад")).ToList());
+                    .Where(x => ((CustomMarkerRed)x.Shape).Label.Content.ToString().Contains(ReturnString("Warehouse"))).ToList());
             });
             this.Dispatcher.Invoke(() =>
             {
                 if (shopMarkers.Count <= 1)
                 {
                     calcThread.Abort();
-                    ShowMessage("Добавьте точки магазинов! Должно быть минимум 2.");
+                    ShowMessage(ReturnString("Error1"));
                     WaitDialog.IsOpen = false;
                     return;
                 }
@@ -121,7 +121,7 @@ namespace TransportProblemMapping.Views
                 if (warehouseMarkers.Count <= 1)
                 {
                     calcThread.Abort();
-                    ShowMessage("Добавьте точки складов! Должно быть минимум 2.");
+                    ShowMessage(ReturnString("Error2"));
                     WaitDialog.IsOpen = false;
                     return;
                 }
@@ -179,7 +179,7 @@ namespace TransportProblemMapping.Views
                 this.Dispatcher.Invoke(() =>
                 {
                     var txtShop = ((CustomMarkerRed)markerShop.Shape).Label.ToString();
-                    shops[i] = int.Parse(txtShop.Substring(txtShop.IndexOf("Товар:") + 7));
+                    shops[i] = int.Parse(txtShop.Substring(txtShop.IndexOf(ReturnString("Product")) + 7));
                     i++;
                 });
             }
@@ -190,7 +190,7 @@ namespace TransportProblemMapping.Views
                 this.Dispatcher.Invoke(() =>
                 {
                     var txtWarehouse = (markerWarehouse.Shape as CustomMarkerRed).Label.ToString();
-                    suppliers[i] = int.Parse(txtWarehouse.Substring(txtWarehouse.IndexOf("Товар:") + 7));
+                    suppliers[i] = int.Parse(txtWarehouse.Substring(txtWarehouse.IndexOf(ReturnString("Product")) + 7));
                     i++;
                 });
             }
@@ -214,9 +214,9 @@ namespace TransportProblemMapping.Views
                             txtW = ((CustomMarkerRed)warehouseMarkers[i].Shape).Label.Content.ToString();
                             txtS = ((CustomMarkerRed)shopMarkers[j].Shape).Label.Content.ToString();
                         });
-                        solutionMessage += "Из склада " + txtW.Substring(0, txtW.IndexOf("\n"))
-                                                        + " в магазин " + txtS.Substring(0, txtS.IndexOf("\n")) + " - "
-                                                        + solution[i, j].ToString() + " единиц товара.\n";
+                        solutionMessage += ReturnString("Info1") + txtW.Substring(0, txtW.IndexOf("\n"))
+                                                        + ReturnString("Info2") + txtS.Substring(0, txtS.IndexOf("\n")) + " - "
+                                                        + solution[i, j].ToString() + ReturnString("Info3") + "\n";
                         this.Dispatcher.Invoke(() =>
                         {
                             AddMarker(routesMappings[i][j]);
@@ -225,7 +225,7 @@ namespace TransportProblemMapping.Views
                 }
             }
 
-            solutionMessage += "Математическая модель: " + Transport.MathematicalPrice;
+            solutionMessage += ReturnString("Mathematical") + Transport.MathematicalPrice;
             this.Dispatcher.Invoke(() =>
             {
                 SolutionBox.Text = solutionMessage;
@@ -249,7 +249,7 @@ namespace TransportProblemMapping.Views
             var gm = new GMapMarker(MainMap.FromLocalToLatLng((int)p.X, (int)p.Y));
             {
                 gm.Shape = new CustomMarkerRed(this, gm, NameCompany.Text,
-                    "Тип: " + TypePoint.Text + "\nТовар: " + CountProduct.Text);
+                    ReturnString("TypeButton") + ": " + TypePoint.Text + "\n" + ReturnString("Product") + ": " + CountProduct.Text);
                 gm.Offset = new Point(-15, -15);
             }
             Markers.Add(gm);
@@ -284,20 +284,24 @@ namespace TransportProblemMapping.Views
         {
             if (string.IsNullOrEmpty(NameCompany.Text))
             {
-                ShowMessage("Укажите наименование фирмы/магазина!");
+                ShowMessage(ReturnString("Error3"));
                 return false;
             }
             else if (string.IsNullOrEmpty(CountProduct.Text))
             {
-                ShowMessage("Укажите количество товара!");
+                ShowMessage(ReturnString("Error4"));
                 return false;
             }
             else if (TypePoint.SelectedIndex == -1)
             {
-                ShowMessage("Выберите тип точки!");
+                ShowMessage(ReturnString("Error5"));
                 return false;
             }
             return true;
+        }
+        private string ReturnString(string Attribute)
+        {
+            return Application.Current.FindResource(Attribute)?.ToString();
         }
         #endregion
     }

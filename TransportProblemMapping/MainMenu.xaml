@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1000" MinWidth="1000" MinHeight="700"
-        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing" FontFamily="Gotham Pro">
     <Window.Resources>
         <materialDesign:MathConverter x:Key="MathConverter" />
     </Window.Resources>
@@ -24,8 +24,8 @@
                                       IsChecked="False"
                                       Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Foreground="White" />
                         <TextBlock Name="GlobalText"
-                                   Text="Пожилой навигатор"
-                                   FontSize="26"
+                                   Text="{DynamicResource NameProgram}"
+                                   FontSize="36"
                                    VerticalAlignment="Center"
                                    Margin="0,0,39,0" HorizontalAlignment="Center" Foreground="White" />
                     </DockPanel>
@@ -74,7 +74,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Home" VerticalAlignment="Stretch" Width="30" Height="30"
                                                          Margin="0,0,10,0" />
-                                <TextBlock Text="Главное меню" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource MainButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -87,7 +87,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="School" VerticalAlignment="Stretch" Width="30"
                                                          Height="30" Margin="0,0,10,0" />
-                                <TextBlock Text="Карта" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource MapButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -99,7 +99,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Book" VerticalAlignment="Stretch" Width="30" Height="30"
                                                          Margin="0,0,10,0" />
-                                <TextBlock Text="Помощь" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource InfoButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -112,7 +112,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Help" VerticalAlignment="Stretch" Width="30" Height="30"
                                                          Margin="0,0,10,0" />
-                                <TextBlock Text="Настройки" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource SettingsButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -125,7 +125,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="CursorPointer" VerticalAlignment="Stretch"
                                                          Width="30" Height="30" Margin="0,0,10,0" />
-                                <TextBlock Text="Об авторах" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource AboutButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -133,7 +133,7 @@
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                                 Margin="0,0,0,10">
-                        <TextBlock TextWrapping="Wrap" Text="Версия 1.0 Release" Foreground="#CC424242"
+                        <TextBlock TextWrapping="Wrap" Text="{DynamicResource Version}" Foreground="#CC424242"
                                    VerticalAlignment="Bottom" HorizontalAlignment="Center" />
                     </StackPanel>
                 </DockPanel>

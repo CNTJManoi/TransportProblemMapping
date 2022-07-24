@@ -11,7 +11,7 @@
         <materialDesign:DialogHost Name="WaitDialog">
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel MaxWidth="350">
-                    <TextBlock Name="DialogText2" Text="Идет процесс расчётов маршрутов. Пожалуйста, подождите." Margin="30,20,30,0"
+                    <TextBlock Name="DialogText2" Text="{DynamicResource CalculationBegin}" Margin="30,20,30,0"
                                Style="{StaticResource MaterialDesignHeadline6TextBlock}" TextAlignment="Center"
                                TextWrapping="Wrap" />
                     <ProgressBar
@@ -30,7 +30,7 @@
                            TextWrapping="Wrap" />
                         <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
-                    Content="Хорошо" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                    Content="{DynamicResource Confirm}" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                     Margin="30,20,30,30" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                     FontSize="16" />
                     </StackPanel>
@@ -48,30 +48,30 @@
                     <StackPanel x:Name="stackPanel2" Grid.Column="0" Margin="0,10,10,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="250" Height="266">
                         <StackPanel x:Name="stackPanel" Orientation="Vertical" HorizontalAlignment="Center"
                             VerticalAlignment="Center" Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel2, Mode=OneWay}">
-                            <TextBlock Text="Название фирмы/магазина" FontSize="16" FontFamily="Gotham Pro"
+                            <TextBlock Text="{DynamicResource Naming}" FontSize="16" FontFamily="Gotham Pro"
                                HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <TextBox Name="NameCompany" FontSize="16" Cursor="Arrow" FontFamily="Gotham Pro"
-                             materialDesign:HintAssist.Hint="Наименование"
+                             materialDesign:HintAssist.Hint="{DynamicResource NamingButton}"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              VerticalAlignment="Center" Margin="0,5,0,0" />
                         </StackPanel>
                         <StackPanel x:Name="stackPanel1" Orientation="Vertical" HorizontalAlignment="Center"
                             VerticalAlignment="Center" Margin="0,5,0,5"
                             Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}">
-                            <TextBlock Text="Количество товара" FontSize="16" HorizontalAlignment="Center"
+                            <TextBlock Text="{DynamicResource Quantity}" FontSize="16" HorizontalAlignment="Center"
                                VerticalAlignment="Center" />
                             <TextBox Name="CountProduct" FontSize="16" Cursor="Arrow"
-                             materialDesign:HintAssist.Hint="Количество"
+                             materialDesign:HintAssist.Hint="{DynamicResource QuantityButton}"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              VerticalAlignment="Center" Margin="0,5,0,0" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"
                             Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
-                            <TextBlock Text="Тип точки" FontSize="16" FontFamily="Gotham Pro" HorizontalAlignment="Center"
+                            <TextBlock Text="{DynamicResource Type}" FontSize="16" FontFamily="Gotham Pro" HorizontalAlignment="Center"
                                VerticalAlignment="Center" />
-                            <ComboBox Name="TypePoint" FontSize="16" Margin="0,10,0,5" materialDesign:HintAssist.Hint="Тип">
-                                <ComboBoxItem Content="Магазин" />
-                                <ComboBoxItem Content="Склад" />
+                            <ComboBox Name="TypePoint" FontSize="16" Margin="0,10,0,5" materialDesign:HintAssist.Hint="{DynamicResource TypeButton}">
+                                <ComboBoxItem Content="{DynamicResource TypeShop}" />
+                                <ComboBoxItem Content="{DynamicResource TypeWarehouse}" />
                             </ComboBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch"
@@ -81,13 +81,13 @@
                             materialDesign:ButtonAssist.CornerRadius="25"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                             Click="Start_Click" Margin="5,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand">
-                                <TextBlock Text="Найти решение" />
+                                <TextBlock Text="{DynamicResource Search}" />
                             </Button>
                             <Button x:Name="ClearButton"
                             Style="{StaticResource MaterialDesignRaisedDarkButton}"
                             materialDesign:ButtonAssist.CornerRadius="25"
                                     Margin="5,0,5,0" Click="ClearButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                                <TextBlock Text="Очистить" />
+                                <TextBlock Text="{DynamicResource Clear}" />
                             </Button>
                         </StackPanel>
                     </StackPanel>
@@ -100,7 +100,7 @@
                             AcceptsReturn="True"
                             TextWrapping="Wrap"
                             VerticalScrollBarVisibility="Auto"
-                            materialDesign:HintAssist.Hint="Решение" FontSize="16" TextAlignment="Justify" Margin="5,10,5,5" Cursor="Arrow"/>
+                            materialDesign:HintAssist.Hint="{DynamicResource Solution}" FontSize="16" TextAlignment="Justify" Margin="5,10,5,5" Cursor="Arrow"/>
                             </DockPanel>
                         </ScrollViewer>
                     </DockPanel>
