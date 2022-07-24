@@ -16,6 +16,19 @@ namespace TransportProblemMapping.Views
 {
     public partial class MapPage : UserControl
     {
+        #region Поля
+
+        private Thread calcThread;
+
+        #endregion
+
+        #region Свойства
+        private RouteCalculation Rc { get; }
+        private PointLatLng PointStart { get; }
+        private List<GMapMarker> Markers { get; }
+        private TransportProblem Transport { get; }
+
+        #endregion
         public MapPage()
         {
             InitializeComponent();
@@ -29,26 +42,14 @@ namespace TransportProblemMapping.Views
             MainMap.MouseWheelZoomEnabled = true;
             MainMap.Zoom = 10;
 
-            //var mRoute = Rc.GetRoute(55.068588649680024f, 82.93997918613105f, 55.065228522013925f, 82.92722868715828f).RouteMarkers;
-            //{
-            //    mRoute.ZIndex = 1;
-            //}
-
-            MainMap.OnTileLoadComplete += MainMap_OnTileLoadComplete;
             MainMap.MouseMove += MainMap_MouseMove;
             MainMap.MouseLeftButtonDown += MainMap_MouseLeftButtonDown;
             MainMap.MouseEnter += MainMap_MouseEnter;
 
-            //Маркер
             Markers = new List<GMapMarker>();
 
             Transport = new TransportProblem();
         }
-
-        private RouteCalculation Rc { get; }
-        private PointLatLng PointStart { get; }
-        private List<GMapMarker> Markers { get; }
-        private TransportProblem Transport { get; }
 
         #region Events
 
@@ -62,23 +63,11 @@ namespace TransportProblemMapping.Views
             var p = e.GetPosition(MainMap);
             if (Markers.Count(x => x.Position == MainMap.FromLocalToLatLng((int)p.X, (int)p.Y)) == 0)
             {
-                if (string.IsNullOrEmpty(NameCompany.Text))
-                {
-                    ShowMessage("Укажите наименование фирмы/магазина!");
-                }
-                else if (string.IsNullOrEmpty(CountProduct.Text))
-                {
-                    ShowMessage("Укажите количество товара!");
-                }
-                else if (TypePoint.SelectedIndex == -1)
-                {
-                    ShowMessage("Выберите тип точки!");
-                }
-                else
-                {
-                    AddMarker(p);
-                    Clear();
-                }
+               if(CheckedFillFields())
+               {
+                   AddMarker(p);
+                   Clear();
+               }
             }
         }
 
@@ -93,12 +82,6 @@ namespace TransportProblemMapping.Views
             }
         }
 
-        private void MainMap_OnTileLoadComplete(long elapsedMilliseconds)
-        {
-            MainMap.ElapsedMilliseconds = elapsedMilliseconds;
-        }
-
-        private Thread calcThread;
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             calcThread = new Thread(CalcThreading);
@@ -106,10 +89,13 @@ namespace TransportProblemMapping.Views
             calcThread.Start();
         }
 
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
+        }
         #endregion
 
         #region Methods
-
         private void CalcThreading()
         {
             List<List<RouteMapping>> routesMappings = new List<List<RouteMapping>>();
@@ -122,17 +108,24 @@ namespace TransportProblemMapping.Views
                 warehouseMarkers = new List<GMapMarker>(Markers
                     .Where(x => ((CustomMarkerRed)x.Shape).Label.Content.ToString().Contains("Склад")).ToList());
             });
-            if (shopMarkers.Count <= 1)
+            this.Dispatcher.Invoke(() =>
             {
-                ShowMessage("Добавьте точки магазинов! Должно быть минимум 2.");
-                return;
-            }
-            else
-            if (warehouseMarkers.Count <= 1)
-            {
-                ShowMessage("Добавьте точки складов! Должно быть минимум 2.");
-                return;
-            }
+                if (shopMarkers.Count <= 1)
+                {
+                    calcThread.Abort();
+                    ShowMessage("Добавьте точки магазинов! Должно быть минимум 2.");
+                    WaitDialog.IsOpen = false;
+                    return;
+                }
+                else
+                if (warehouseMarkers.Count <= 1)
+                {
+                    calcThread.Abort();
+                    ShowMessage("Добавьте точки складов! Должно быть минимум 2.");
+                    WaitDialog.IsOpen = false;
+                    return;
+                }
+            });
             var suppliers = new int[warehouseMarkers.Count];
             var shops = new int[shopMarkers.Count];
             var matrix = new double[warehouseMarkers.Count, shopMarkers.Count];
@@ -266,12 +259,46 @@ namespace TransportProblemMapping.Views
         {
             MainMap.Markers.Add(p.RouteMarkers);
         }
-
+        public void AddMarker(CustomMarkerRed cm)
+        {
+            Markers.Add(cm.Marker);
+            MainMap.Markers.Add(cm.Marker);
+            Clear();
+        }
         private void AddMarkerOnMap(GMapMarker gm)
         {
             MainMap.Markers.Add(gm);
         }
+        public void DeleteMarker(GMapMarker gm)
+        {
+            MainMap.Markers.Remove(gm);
+            Markers.Remove(gm);
+        }
 
+        private void ClearAll()
+        {
+            MainMap.Markers.Clear();
+            Markers.Clear();
+        }
+        public bool CheckedFillFields()
+        {
+            if (string.IsNullOrEmpty(NameCompany.Text))
+            {
+                ShowMessage("Укажите наименование фирмы/магазина!");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(CountProduct.Text))
+            {
+                ShowMessage("Укажите количество товара!");
+                return false;
+            }
+            else if (TypePoint.SelectedIndex == -1)
+            {
+                ShowMessage("Выберите тип точки!");
+                return false;
+            }
+            return true;
+        }
         #endregion
     }
 }
