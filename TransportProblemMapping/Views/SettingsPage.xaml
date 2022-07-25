@@ -24,7 +24,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Меню настроек" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top"
+            <TextBlock Text="{DynamicResource MenuSettings}" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top"
                        FontSize="36" TextAlignment="Center" FontWeight="Normal" FontStyle="Normal"
                        TextDecorations="{x:Null}" />
             <StackPanel Grid.Column="0" Margin="10,50,10,10">

@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsPresentation;
+using Itinero.Attributes;
 using TransportAlgorithms;
 using TransportProblemMapping.Logic;
 using TransportProblemMapping.Markers;
@@ -19,12 +22,12 @@ namespace TransportProblemMapping.Views
         #region Fields
 
         private Thread calcThread;
-
         #endregion
 
         public MapPage()
         {
             InitializeComponent();
+            App.LanguageChanged += LanguageChanged;
             Rc = new RouteCalculation();
             PointStart = new PointLatLng(55.025070240194744, 82.9275512695313);
             MainMap.MapProvider = GMapProviders.OpenStreetMap;
@@ -42,6 +45,12 @@ namespace TransportProblemMapping.Views
             Markers = new List<GMapMarker>();
 
             Transport = new TransportProblem();
+            ChangeLanguage();
+        }
+
+        private void LanguageChanged(object sender, EventArgs e)
+        {
+            ClearAll();
         }
 
         #region Properties
@@ -176,11 +185,12 @@ namespace TransportProblemMapping.Views
             }
 
             i = 0;
+            string pr = ReturnString("Product");
             foreach (var markerShop in shopMarkers)
                 Dispatcher.Invoke(() =>
                 {
                     var txtShop = ((CustomMarkerRed)markerShop.Shape).Label.ToString();
-                    shops[i] = int.Parse(txtShop.Substring(txtShop.IndexOf(ReturnString("Product")) + 7));
+                    shops[i] = int.Parse(txtShop.Substring(txtShop.IndexOf(pr) + (pr.Length+1)));
                     i++;
                 });
 
@@ -189,7 +199,7 @@ namespace TransportProblemMapping.Views
                 Dispatcher.Invoke(() =>
                 {
                     var txtWarehouse = (markerWarehouse.Shape as CustomMarkerRed).Label.ToString();
-                    suppliers[i] = int.Parse(txtWarehouse.Substring(txtWarehouse.IndexOf(ReturnString("Product")) + 7));
+                    suppliers[i] = int.Parse(txtWarehouse.Substring(txtWarehouse.IndexOf(pr) + (pr.Length + 1)));
                     i++;
                 });
 
@@ -210,14 +220,14 @@ namespace TransportProblemMapping.Views
                         txtW = ((CustomMarkerRed)warehouseMarkers[i].Shape).Label.Content.ToString();
                         txtS = ((CustomMarkerRed)shopMarkers[j].Shape).Label.Content.ToString();
                     });
-                    solutionMessage += ReturnString("Info1") + txtW.Substring(0, txtW.IndexOf("\n"))
-                                                             + ReturnString("Info2") +
+                    solutionMessage += ReturnString("Info1") + " " + txtW.Substring(0, txtW.IndexOf("\n")) + " "
+                                                             + ReturnString("Info2") + " " +
                                                              txtS.Substring(0, txtS.IndexOf("\n")) + " - "
-                                                             + solution[i, j] + ReturnString("Info3") + "\n";
+                                                             + solution[i, j] + " " + ReturnString("Info3") + "\n";
                     Dispatcher.Invoke(() => { AddMarker(routesMappings[i][j]); });
                 }
 
-            solutionMessage += ReturnString("Mathematical") + Transport.MathematicalPrice;
+            solutionMessage += ReturnString("Mathematical") + " " + Transport.MathematicalPrice;
             Dispatcher.Invoke(() =>
             {
                 SolutionBox.Text = solutionMessage;
@@ -268,6 +278,10 @@ namespace TransportProblemMapping.Views
             MainMap.Markers.Add(gm);
         }
 
+        private void ChangeLanguage()
+        {
+        }
+
         public void DeleteMarker(GMapMarker gm)
         {
             MainMap.Markers.Remove(gm);
@@ -307,7 +321,6 @@ namespace TransportProblemMapping.Views
         {
             return Application.Current.FindResource(Attribute)?.ToString();
         }
-
         #endregion
     }
 }

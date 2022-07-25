@@ -21,7 +21,7 @@
     <v:String x:Key="Quantity">Product Quantity</v:String>
     <v:String x:Key="QuantityButton">Quantity</v:String>
     <v:String x:Key="Type">Item type</v:String>
-    <v:String x:Key="TypeShop">Store</v:String>
+    <v:String x:Key="TypeShop">Shop</v:String>
     <v:String x:Key="TypeButton">Type</v:String>
     <v:String x:Key="TypeWarehouse">Warehouse</v:String>
     <v:String x:Key="Search">Find a solution</v:String>
@@ -32,9 +32,9 @@
     <v:String x:Key="Warehouse">Warehouse</v:String>
     <v:String x:Key="Product">Product</v:String>
 
-    <v:String x:Key="Info1">From the warehouse </v:String>
-    <v:String x:Key="Info2">to the store </v:String>
-    <v:String x:Key="Info3"> product units.</v:String>
+    <v:String x:Key="Info1">From the warehouse</v:String>
+    <v:String x:Key="Info2">to the store</v:String>
+    <v:String x:Key="Info3">product units.</v:String>
 
     <v:String x:Key="Mathematical">Mathematical model: </v:String>
 
@@ -47,6 +47,8 @@
     <v:String x:Key="Error6">The fuel price is set incorrectly!</v:String>
     <v:String x:Key="Error7">Fuel consumption is set incorrectly!</v:String>
     <v:String x:Key="Error8">Fill in all fields!</v:String>
+    <v:String x:Key="Error9">An error occurred when determining the positions of the points. Move the dot *</v:String>
+    <v:String x:Key="Error10">An error occurred while determining the route. You may have chosen an unsupported region.</v:String>
 
     <v:String x:Key="Confirm">Ok</v:String>
     <v:String x:Key="CalculationBegin">Routes are calculated. Please wait.</v:String>
@@ -67,7 +69,7 @@
 
     <v:String x:Key="Northwest">Northwest method</v:String>
     <v:String x:Key="Potentials">Method of potentials</v:String>
-    <v:String x:Key="MethodSettings">Linear programming method used</v:String>
+    <v:String x:Key="MethodSettings">The linear programming method used to find the solution</v:String>
 
     <v:String x:Key="Price">Cost</v:String>
     <v:String x:Key="GasPrice">Current price for 1 liter of gasoline</v:String>
@@ -76,4 +78,7 @@
     <v:String x:Key="ConsumptionSettings">Gasoline consumption per 100 km</v:String>
 
     <v:String x:Key="ConfirmFull">Confirm</v:String>
+
+    <v:String x:Key="Delete">Delete</v:String>
+    <v:String x:Key="Edit">Edit</v:String>
 </ResourceDictionary>

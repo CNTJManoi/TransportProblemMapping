@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 using GMap.NET;
 using GMap.NET.WindowsPresentation;
 using Itinero;
@@ -29,7 +30,8 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-                    mp.ShowMessage("Произошла ошибка при определении положений точек. Переместите точку *" + startStr +
+
+                    mp.ShowMessage(ReturnString("Error9") + startStr +
                                    "*");
                     return null;
                 }
@@ -40,7 +42,7 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-                    mp.ShowMessage("Произошла ошибка при определении положений точек. Переместите точку *" + endStr +
+                    mp.ShowMessage(ReturnString("Error9") + endStr +
                                    "*");
                     return null;
                 }
@@ -52,7 +54,7 @@ namespace TransportProblemMapping.Logic
                 catch
                 {
                     mp.ShowMessage(
-                        "Произошла ошибка при определении маршрута. Возможно Вы выбрали неподдерживаемый регион.");
+                        ReturnString("Error10"));
                     return null;
                 }
 
@@ -66,6 +68,10 @@ namespace TransportProblemMapping.Logic
                 var k = route.TotalDistance;
                 return new RouteMapping(new GMapRoute(put), route.TotalDistance);
             }
+        }
+        private string ReturnString(string Attribute)
+        {
+            return Application.Current.FindResource(Attribute)?.ToString();
         }
     }
 }

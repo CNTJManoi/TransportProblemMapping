@@ -47,6 +47,8 @@
     <v:String x:Key="Error6">Неверно задана цена топлива!</v:String>
     <v:String x:Key="Error7">Неверно задан расход топлива!</v:String>
     <v:String x:Key="Error8">Заполните все поля!</v:String>
+    <v:String x:Key="Error9">Произошла ошибка при определении положений точек. Переместите точку *</v:String>
+    <v:String x:Key="Error10">Произошла ошибка при определении маршрута. Возможно Вы выбрали неподдерживаемый регион.</v:String>
 
     <v:String x:Key="Confirm">Ок</v:String>
     <v:String x:Key="CalculationBegin">Производится расчёт маршрутов. Пожалуйста, подождите.</v:String>
@@ -76,4 +78,7 @@
     <v:String x:Key="ConsumptionSettings">Расход бензина на 100 км</v:String>
 
     <v:String x:Key="ConfirmFull">Подтвердить</v:String>
+
+    <v:String x:Key="Delete">Удалить</v:String>
+    <v:String x:Key="Edit">Редактировать</v:String>
 </ResourceDictionary>

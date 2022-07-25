@@ -74,7 +74,7 @@ namespace TransportProblemMapping.Views
 
             try
             {
-                priceFuel = float.Parse(PriceBox.Text.Replace(',', '.'));
+                priceFuel = float.Parse(PriceBox.Text.Replace('.', ','));
             }
             catch
             {
@@ -84,7 +84,7 @@ namespace TransportProblemMapping.Views
 
             try
             {
-                consumptionFuel = float.Parse(ConsumptionBox.Text.Replace(',', '.'));
+                consumptionFuel = float.Parse(ConsumptionBox.Text.Replace('.', ','));
             }
             catch
             {

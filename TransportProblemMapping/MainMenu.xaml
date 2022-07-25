@@ -43,6 +43,10 @@
                                     Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
+                        <pg:HelpPage x:Name="InfoPage" Width="Auto"
+                                      Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
                             <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:0.4" />
                             <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4"
@@ -68,6 +72,7 @@
                     <StackPanel DockPanel.Dock="Top">
                         <Button Name="HomeButton" FontSize="18" Height="Auto"
                                 Foreground="Black"
+                                Click="ButtonTransit_Click"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
@@ -84,45 +89,46 @@
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
-                                Click="MapButton_Click">
+                                Click="ButtonTransit_Click">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="School" VerticalAlignment="Stretch" Width="30"
+                                <materialDesign:PackIcon Kind="Map" VerticalAlignment="Stretch" Width="30"
                                                          Height="30" Margin="0,0,10,0" />
                                 <TextBlock Text="{DynamicResource MapButton}" Margin="0,0,20,0" TextAlignment="Center"
                                            LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Name="TestButton" FontSize="18" Height="Auto"
+                        <Button Name="InfoButton" FontSize="18" Height="Auto"
                                 Foreground="Black"
+                                Click="ButtonTransit_Click"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Book" VerticalAlignment="Stretch" Width="30" Height="30"
+                                <materialDesign:PackIcon Kind="Information" VerticalAlignment="Stretch" Width="30" Height="30"
                                                          Margin="0,0,10,0" />
                                 <TextBlock Text="{DynamicResource InfoButton}" Margin="0,0,20,0" TextAlignment="Center"
                                            LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Name="HelpButton" FontSize="18" Height="Auto"
+                        <Button Name="SettingsButton" FontSize="18" Height="Auto"
                                 Foreground="Black"
-
+                                Click="ButtonTransit_Click"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Cursor="Hand">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Help" VerticalAlignment="Stretch" Width="30" Height="30"
+                                <materialDesign:PackIcon Kind="AccountGroup" VerticalAlignment="Stretch" Width="30" Height="30"
                                                          Margin="0,0,10,0" />
                                 <TextBlock Text="{DynamicResource SettingsButton}" Margin="0,0,20,0"
                                            TextAlignment="Center" LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
-                        <Button Name="PointerButton" FontSize="18" Height="Auto"
+                        <Button Name="AboutButton" FontSize="18" Height="Auto"
                                 Foreground="Black"
-
+                                Click="ButtonTransit_Click"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
