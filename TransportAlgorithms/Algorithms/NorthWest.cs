@@ -4,11 +4,11 @@ namespace TransportAlgorithms.Algorithms
 {
     public class NorthWest : IAlgorithm
     {
-        private bool isFound;
         private readonly double[,] Matrix;
         private readonly int[] Shops;
-        private double[,] Solution;
         private readonly int[] Suppliers;
+        private bool isFound;
+        private double[,] Solution;
 
         public NorthWest(double[,] Matr, int[] Suppliers, int[] Shops)
         {

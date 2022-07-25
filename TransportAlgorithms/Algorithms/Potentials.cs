@@ -5,9 +5,9 @@ namespace TransportAlgorithms.Algorithms
 {
     public class Potentials : IAlgorithm
     {
+        private readonly double[,] Matrix;
         private Point[] Allowed;
         private bool isFound;
-        private readonly double[,] Matrix;
         private int[] Shops;
         private double[,] Solution;
         private int[] Suppliers;
