@@ -6,8 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000" MinWidth="1000" MinHeight="700"
-        WindowStartupLocation="CenterScreen" Closing="Window_Closing" FontFamily="Gotham Pro">
+        Title="{DynamicResource NameProgram}" Height="700" Width="1000" MinWidth="1000" MinHeight="700"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing" FontFamily="Gotham Pro" Icon="/icon.ico" >
     <Window.Resources>
         <materialDesign:MathConverter x:Key="MathConverter" />
     </Window.Resources>
