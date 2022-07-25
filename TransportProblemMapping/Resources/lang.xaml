@@ -73,7 +73,7 @@
     <v:String x:Key="GasPrice">Текущая цена за 1 литр бензина</v:String>
 
     <v:String x:Key="Consumption">Расход</v:String>
-    <v:String x:Key="ConsumptionSettings">Расход бензина на 1 км</v:String>
+    <v:String x:Key="ConsumptionSettings">Расход бензина на 100 км</v:String>
 
     <v:String x:Key="ConfirmFull">Подтвердить</v:String>
 </ResourceDictionary>

@@ -73,7 +73,7 @@
     <v:String x:Key="GasPrice">Current price for 1 liter of gasoline</v:String>
 
     <v:String x:Key="Consumption">Consumption</v:String>
-    <v:String x:Key="ConsumptionSettings">Gasoline consumption per 1 km</v:String>
+    <v:String x:Key="ConsumptionSettings">Gasoline consumption per 100 km</v:String>
 
     <v:String x:Key="ConfirmFull">Confirm</v:String>
 </ResourceDictionary>
