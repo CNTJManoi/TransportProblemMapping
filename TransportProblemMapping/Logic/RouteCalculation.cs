@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows;
 using GMap.NET;
 using GMap.NET.WindowsPresentation;
 using Itinero;
@@ -13,7 +12,8 @@ namespace TransportProblemMapping.Logic
 {
     internal class RouteCalculation
     {
-        public RouteMapping GetRoute(float sh1, float dl1, float sh2, float dl2, MapPage mp, string startStr, string endStr)
+        public RouteMapping GetRoute(float sh1, float dl1, float sh2, float dl2, MapPage mp, string startStr,
+            string endStr)
         {
             using (var stream = new FileInfo(@"Data\siberian-fed-district-latest.routerdb").Open(FileMode.Open))
             {
@@ -29,25 +29,30 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-                    mp.ShowMessage("Произошла ошибка при определении положений точек. Переместите точку *" + startStr + "*");
+                    mp.ShowMessage("Произошла ошибка при определении положений точек. Переместите точку *" + startStr +
+                                   "*");
                     return null;
                 }
+
                 try
                 {
                     end = router.Resolve(profile, sh2, dl2);
                 }
                 catch
                 {
-                    mp.ShowMessage("Произошла ошибка при определении положений точек. Переместите точку *" + endStr + "*");
+                    mp.ShowMessage("Произошла ошибка при определении положений точек. Переместите точку *" + endStr +
+                                   "*");
                     return null;
                 }
+
                 try
                 {
                     route = router.Calculate(profile, start, end);
                 }
                 catch
                 {
-                    mp.ShowMessage("Произошла ошибка при определении маршрута. Возможно Вы выбрали неподдерживаемый регион.");
+                    mp.ShowMessage(
+                        "Произошла ошибка при определении маршрута. Возможно Вы выбрали неподдерживаемый регион.");
                     return null;
                 }
 

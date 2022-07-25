@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 
 namespace TransportProblemMapping
@@ -15,13 +16,13 @@ namespace TransportProblemMapping
 
         private void MapButton_Click(object sender, RoutedEventArgs e)
         {
-            Transitioner.SelectedIndex = 1;
+            Transitioner.SelectedIndex = 2;
             MenuToggleButton.IsChecked = false;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

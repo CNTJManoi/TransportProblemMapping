@@ -26,81 +26,91 @@
                 <materialDesign:DialogHost.DialogContent>
                     <StackPanel MaxWidth="350">
                         <TextBlock Name="DialogText" Margin="30,20,30,0"
-                           Style="{StaticResource MaterialDesignHeadline6TextBlock}" TextAlignment="Center"
-                           TextWrapping="Wrap" />
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}" TextAlignment="Center"
+                                   TextWrapping="Wrap" />
                         <Button
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    Content="{DynamicResource Confirm}" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                    Margin="30,20,30,30" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                    FontSize="16" />
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Content="{DynamicResource Confirm}" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                            Margin="30,20,30,30" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            FontSize="16" />
                     </StackPanel>
                 </materialDesign:DialogHost.DialogContent>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="75*" />
                         <ColumnDefinition Width="120*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1.5*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="1.5*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <controls:Map x:Name="MainMap" Grid.Column="1" Margin="10,10,10,10" Grid.RowSpan="2"/>
-                    <StackPanel x:Name="stackPanel2" Grid.Column="0" Margin="0,10,10,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="250" Height="266">
+                    <controls:Map x:Name="MainMap" Grid.Column="1" Margin="10,10,10,10" Grid.RowSpan="2" />
+                    <StackPanel x:Name="stackPanel2" Grid.Column="0" Margin="0,10,10,0" HorizontalAlignment="Center"
+                                VerticalAlignment="Top" Width="250" Height="266">
                         <StackPanel x:Name="stackPanel" Orientation="Vertical" HorizontalAlignment="Center"
-                            VerticalAlignment="Center" Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel2, Mode=OneWay}">
+                                    VerticalAlignment="Center" Margin="0,5,0,5"
+                                    Width="{Binding ActualWidth, ElementName=stackPanel2, Mode=OneWay}">
                             <TextBlock Text="{DynamicResource Naming}" FontSize="16" FontFamily="Gotham Pro"
-                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <TextBox Name="NameCompany" FontSize="16" Cursor="Arrow" FontFamily="Gotham Pro"
-                             materialDesign:HintAssist.Hint="{DynamicResource NamingButton}"
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             VerticalAlignment="Center" Margin="0,5,0,0" />
+                                     materialDesign:HintAssist.Hint="{DynamicResource NamingButton}"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     VerticalAlignment="Center" Margin="0,5,0,0" />
                         </StackPanel>
                         <StackPanel x:Name="stackPanel1" Orientation="Vertical" HorizontalAlignment="Center"
-                            VerticalAlignment="Center" Margin="0,5,0,5"
-                            Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}">
+                                    VerticalAlignment="Center" Margin="0,5,0,5"
+                                    Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}">
                             <TextBlock Text="{DynamicResource Quantity}" FontSize="16" HorizontalAlignment="Center"
-                               VerticalAlignment="Center" />
+                                       VerticalAlignment="Center" />
                             <TextBox Name="CountProduct" FontSize="16" Cursor="Arrow"
-                             materialDesign:HintAssist.Hint="{DynamicResource QuantityButton}"
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             VerticalAlignment="Center" Margin="0,5,0,0" />
+                                     materialDesign:HintAssist.Hint="{DynamicResource QuantityButton}"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     VerticalAlignment="Center" Margin="0,5,0,0" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"
-                            Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
-                            <TextBlock Text="{DynamicResource Type}" FontSize="16" FontFamily="Gotham Pro" HorizontalAlignment="Center"
-                               VerticalAlignment="Center" />
-                            <ComboBox Name="TypePoint" FontSize="16" Margin="0,10,0,5" materialDesign:HintAssist.Hint="{DynamicResource TypeButton}">
+                                    Margin="0,5,0,5"
+                                    Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
+                            <TextBlock Text="{DynamicResource Type}" FontSize="16" FontFamily="Gotham Pro"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                            <ComboBox Name="TypePoint" FontSize="16" Margin="0,10,0,5"
+                                      materialDesign:HintAssist.Hint="{DynamicResource TypeButton}">
                                 <ComboBoxItem Content="{DynamicResource TypeShop}" />
                                 <ComboBoxItem Content="{DynamicResource TypeWarehouse}" />
                             </ComboBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                            Margin="0,5,0,5" Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
+                                    Margin="0,5,0,5"
+                                    Width="{Binding ActualWidth, ElementName=stackPanel1, Mode=OneWay}">
                             <Button
-                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                            materialDesign:ButtonAssist.CornerRadius="25"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Click="Start_Click" Margin="5,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand">
+                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                materialDesign:ButtonAssist.CornerRadius="25"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Click="Start_Click" Margin="5,0,5,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                Cursor="Hand">
                                 <TextBlock Text="{DynamicResource Search}" />
                             </Button>
                             <Button x:Name="ClearButton"
-                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                            materialDesign:ButtonAssist.CornerRadius="25"
-                                    Margin="5,0,5,0" Click="ClearButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="25"
+                                    Margin="5,0,5,0" Click="ClearButton_Click" HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom">
                                 <TextBlock Text="{DynamicResource Clear}" />
                             </Button>
                         </StackPanel>
                     </StackPanel>
                     <DockPanel Grid.Column="0" Grid.Row="1" Margin="0,0,14,0">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch">
                             <DockPanel Margin="0,0,0,5">
                                 <TextBox Name="SolutionBox" IsReadOnly="True"
-                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                            VerticalAlignment="Stretch"
-                            AcceptsReturn="True"
-                            TextWrapping="Wrap"
-                            VerticalScrollBarVisibility="Auto"
-                            materialDesign:HintAssist.Hint="{DynamicResource Solution}" FontSize="16" TextAlignment="Justify" Margin="5,10,5,5" Cursor="Arrow"/>
+                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                         VerticalAlignment="Stretch"
+                                         AcceptsReturn="True"
+                                         TextWrapping="Wrap"
+                                         VerticalScrollBarVisibility="Auto"
+                                         materialDesign:HintAssist.Hint="{DynamicResource Solution}" FontSize="16"
+                                         TextAlignment="Justify" Margin="5,10,5,5" Cursor="Arrow" />
                             </DockPanel>
                         </ScrollViewer>
                     </DockPanel>

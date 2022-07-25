@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="{DynamicResource NameProgram}" Height="700" Width="1000" MinWidth="1000" MinHeight="700"
-        WindowStartupLocation="CenterScreen" Closing="Window_Closing" FontFamily="Gotham Pro" Icon="/icon.ico" >
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing" FontFamily="Gotham Pro" Icon="/icon.ico">
     <Window.Resources>
         <materialDesign:MathConverter x:Key="MathConverter" />
     </Window.Resources>
@@ -48,8 +48,8 @@
                             <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4"
                                                              OffsetTime="0:0:0.9" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
-                        <pg:HelpPage x:Name="HelpPage" Width="Auto"
-                                     Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                        <pg:SettingsPage x:Name="SettingsPage" Width="Auto"
+                                         Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
                         <pg:AboutPage x:Name="AboutPage" Width="Auto"
@@ -74,7 +74,8 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Home" VerticalAlignment="Stretch" Width="30" Height="30"
                                                          Margin="0,0,10,0" />
-                                <TextBlock Text="{DynamicResource MainButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource MainButton}" Margin="0,0,20,0" TextAlignment="Center"
+                                           LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -87,7 +88,8 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="School" VerticalAlignment="Stretch" Width="30"
                                                          Height="30" Margin="0,0,10,0" />
-                                <TextBlock Text="{DynamicResource MapButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource MapButton}" Margin="0,0,20,0" TextAlignment="Center"
+                                           LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -99,7 +101,8 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Book" VerticalAlignment="Stretch" Width="30" Height="30"
                                                          Margin="0,0,10,0" />
-                                <TextBlock Text="{DynamicResource InfoButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource InfoButton}" Margin="0,0,20,0" TextAlignment="Center"
+                                           LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -112,7 +115,8 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Help" VerticalAlignment="Stretch" Width="30" Height="30"
                                                          Margin="0,0,10,0" />
-                                <TextBlock Text="{DynamicResource SettingsButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource SettingsButton}" Margin="0,0,20,0"
+                                           TextAlignment="Center" LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>
@@ -125,7 +129,8 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="CursorPointer" VerticalAlignment="Stretch"
                                                          Width="30" Height="30" Margin="0,0,10,0" />
-                                <TextBlock Text="{DynamicResource AboutButton}" Margin="0,0,20,0" TextAlignment="Center" LineHeight="1"
+                                <TextBlock Text="{DynamicResource AboutButton}" Margin="0,0,20,0"
+                                           TextAlignment="Center" LineHeight="1"
                                            VerticalAlignment="Center" />
                             </StackPanel>
                         </Button>

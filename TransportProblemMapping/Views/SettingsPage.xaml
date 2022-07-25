@@ -2,12 +2,144 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TransportProblemMapping.Views"
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800" FontFamily="Gotham Pro">
-    <Grid>
-            
-    </Grid>
+    <materialDesign:DialogHost Name="Dialog">
+        <materialDesign:DialogHost.DialogContent>
+            <StackPanel MaxWidth="350">
+                <TextBlock Name="DialogText" Margin="30,20,30,0"
+                           Style="{StaticResource MaterialDesignHeadline6TextBlock}" TextAlignment="Center"
+                           TextWrapping="Wrap" />
+                <Button
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Content="{DynamicResource Confirm}" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                    Margin="30,20,30,30" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                    FontSize="16" />
+            </StackPanel>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Меню настроек" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top"
+                       FontSize="36" TextAlignment="Center" FontWeight="Normal" FontStyle="Normal"
+                       TextDecorations="{x:Null}" />
+            <StackPanel Grid.Column="0" Margin="10,50,10,10">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource SystemSettings}" FontSize="20" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" TextAlignment="Center" />
+                    <materialDesign:Card
+                        Background="{DynamicResource MaterialDesignLightBackground}"
+                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                        Padding="8" Margin="0,5,0,5">
+                        <ListBox Name="ListBoxMeasurement"
+                                 Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}"
+                                 SelectionMode="Multiple"
+                                 HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"
+                                 SelectedIndex="0">
+                            <ListBoxItem Content="{DynamicResource MetersSettings}" />
+                            <ListBoxItem Content="{DynamicResource KiloSettings}" />
+                        </ListBox>
+                    </materialDesign:Card>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" Text="{DynamicResource GasSettings}" FontSize="20"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
+                    <materialDesign:Card
+                        Background="{DynamicResource MaterialDesignLightBackground}"
+                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                        Padding="8" Margin="0,5,0,5">
+                        <ListBox
+                            SelectionMode="Multiple"
+                            Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}"
+                            Name="ListBoxUseFuel" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Margin="0,5,0,5" SelectedIndex="0">
+                            <ListBoxItem Content="{DynamicResource Yes}" />
+                            <ListBoxItem Content="{DynamicResource No}" />
+                        </ListBox>
+                    </materialDesign:Card>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" Text="{DynamicResource GasPrice}" FontSize="20"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
+                    <materialDesign:Card
+                        Background="{DynamicResource MaterialDesignLightBackground}"
+                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                        Padding="8" Margin="0,5,0,5">
+                        <TextBox Name="PriceBox" Text="57.25"
+                                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 VerticalAlignment="Top"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 MaxWidth="400"
+                                 materialDesign:HintAssist.Hint="{DynamicResource Price}" Cursor="Arrow" />
+                    </materialDesign:Card>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="10,50,10,10">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource LanguageSettings}" FontSize="20" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" TextAlignment="Center" />
+                    <materialDesign:Card
+                        Background="{DynamicResource MaterialDesignLightBackground}"
+                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                        Padding="8" Margin="0,5,0,5">
+                        <ListBox
+                            Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}"
+                            Name="ListBoxLanguage" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Margin="0,5,0,5" SelectedIndex="0">
+                            <ListBoxItem Content="{DynamicResource RussianLanguage}" />
+                            <ListBoxItem Content="{DynamicResource EnglishLanguage}" />
+                        </ListBox>
+                    </materialDesign:Card>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" Text="{DynamicResource MethodSettings}" FontSize="20"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
+                    <materialDesign:Card
+                        Background="{DynamicResource MaterialDesignLightBackground}"
+                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                        Padding="8" Margin="0,5,0,5">
+                        <ListBox
+                            Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}"
+                            Name="ListBoxMethods" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Margin="0,5,0,5" SelectedIndex="0">
+                            <ListBoxItem Content="{DynamicResource Northwest}" />
+                            <ListBoxItem Content="{DynamicResource Potentials}" />
+                        </ListBox>
+                    </materialDesign:Card>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" Text="{DynamicResource ConsumptionSettings}" FontSize="20"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
+                    <materialDesign:Card
+                        Background="{DynamicResource MaterialDesignLightBackground}"
+                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                        Padding="8" Margin="0,5,0,5">
+                        <TextBox Name="ConsumptionBox" Text="12.0"
+                                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 VerticalAlignment="Top"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 MaxWidth="400"
+                                 materialDesign:HintAssist.Hint="{DynamicResource Consumption}" Cursor="Arrow" />
+                    </materialDesign:Card>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="ConfirmButton"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            materialDesign:ButtonAssist.CornerRadius="25" Height="50" Cursor="Hand"
+                            Click="ConfirmButton_Click">
+                        <TextBlock
+                            Text="{DynamicResource ConfirmFull}" FontSize="22" />
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </materialDesign:DialogHost>
 </UserControl>

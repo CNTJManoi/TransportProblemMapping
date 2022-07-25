@@ -1,8 +1,8 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Linq;
 using System.Windows.Media;
 using GMap.NET.WindowsPresentation;
 using TransportProblemMapping.Views;
@@ -14,10 +14,6 @@ namespace TransportProblemMapping.Markers
     /// </summary>
     public partial class CustomMarkerRed
     {
-        private Popup Popup { get; }
-        public Label Label { get; }
-        public GMapMarker Marker { get; private set; }
-        private MapPage MainWindow { get; }
         public CustomMarkerRed(MapPage window, GMapMarker marker, string title, string data)
         {
             InitializeComponent();
@@ -48,6 +44,11 @@ namespace TransportProblemMapping.Markers
             }
             Popup.Child = Label;
         }
+
+        private Popup Popup { get; }
+        public Label Label { get; }
+        public GMapMarker Marker { get; }
+        private MapPage MainWindow { get; }
 
         private void CustomMarkerDemo_Loaded(object sender, RoutedEventArgs e)
         {
@@ -100,11 +101,11 @@ namespace TransportProblemMapping.Markers
             if (MainWindow.CheckedFillFields())
             {
                 MainWindow.DeleteMarker(MainWindow.MainMap.Markers.Where(x => x.Shape == this).First());
-                string title = MainWindow.NameCompany.Text;
-                string data = "Тип: " + 
-                    MainWindow.TypePoint.Text + 
-                    "\nТовар: " + 
-                    MainWindow.CountProduct.Text;
+                var title = MainWindow.NameCompany.Text;
+                var data = "Тип: " +
+                           MainWindow.TypePoint.Text +
+                           "\nТовар: " +
+                           MainWindow.CountProduct.Text;
                 title += "\n" + data;
                 Label.Content = title;
                 Marker.Shape = this;

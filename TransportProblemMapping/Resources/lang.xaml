@@ -44,6 +44,36 @@
     <v:String x:Key="Error4">Введите количество товаров!</v:String>
     <v:String x:Key="Error5">Выберите тип точки!</v:String>
 
-    <v:String x:Key="Confirm">Ok</v:String>
+    <v:String x:Key="Error6">Неверно задана цена топлива!</v:String>
+    <v:String x:Key="Error7">Неверно задан расход топлива!</v:String>
+    <v:String x:Key="Error8">Заполните все поля!</v:String>
+
+    <v:String x:Key="Confirm">Ок</v:String>
     <v:String x:Key="CalculationBegin">Производится расчёт маршрутов. Пожалуйста, подождите.</v:String>
+
+    <v:String x:Key="MenuSettings">Меню настроек</v:String>
+
+    <v:String x:Key="MetersSettings">Метры</v:String>
+    <v:String x:Key="KiloSettings">Километры</v:String>
+    <v:String x:Key="SystemSettings">Единица измерения расстояния</v:String>
+
+    <v:String x:Key="RussianLanguage">Русский</v:String>
+    <v:String x:Key="EnglishLanguage">Английский</v:String>
+    <v:String x:Key="LanguageSettings">Используемый язык</v:String>
+
+    <v:String x:Key="Yes">Да</v:String>
+    <v:String x:Key="No">Нет</v:String>
+    <v:String x:Key="GasSettings">Расчёт математической модели на основе цены бензина</v:String>
+
+    <v:String x:Key="Northwest">Северо-западный метод</v:String>
+    <v:String x:Key="Potentials">Метод потенциалов</v:String>
+    <v:String x:Key="MethodSettings">Используемый метод линейного программирования</v:String>
+
+    <v:String x:Key="Price">Стоимость</v:String>
+    <v:String x:Key="GasPrice">Текущая цена за 1 литр бензина</v:String>
+
+    <v:String x:Key="Consumption">Расход</v:String>
+    <v:String x:Key="ConsumptionSettings">Расход бензина на 1 км</v:String>
+
+    <v:String x:Key="ConfirmFull">Подтвердить</v:String>
 </ResourceDictionary>
