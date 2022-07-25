@@ -51,7 +51,7 @@
     <v:String x:Key="Error10">An error occurred while determining the route. You may have chosen an unsupported region.</v:String>
 
     <v:String x:Key="Confirm">Ok</v:String>
-    <v:String x:Key="CalculationBegin">Routes are calculated. Please wait.</v:String>
+    <v:String x:Key="CalculationBegin">Routes in the calculation process. Please wait.</v:String>
 
     <v:String x:Key="MenuSettings">Settings menu</v:String>
 

@@ -13,6 +13,7 @@ namespace TransportProblemMapping.Views
         public SettingsPage()
         {
             InitializeComponent();
+            RefreshListBoxs();
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -31,18 +32,6 @@ namespace TransportProblemMapping.Views
                     break;
                 case 1:
                     um = UnitOfMeasurement.Kilometers;
-                    break;
-            }
-
-            switch (ListBoxLanguage.SelectedIndex)
-            {
-                case 0:
-                    lang = Languages.Russian;
-                    App.Language = new CultureInfo("ru-RU");
-                    break;
-                case 1:
-                    lang = Languages.English;
-                    App.Language = new CultureInfo("en-US");
                     break;
             }
 
@@ -91,12 +80,24 @@ namespace TransportProblemMapping.Views
                 ShowError(ReturnString("Error7"));
                 return;
             }
+            switch (ListBoxLanguage.SelectedIndex)
+            {
+                case 0:
+                    lang = Languages.Russian;
+                    App.Language = new CultureInfo("ru-RU");
+                    break;
+                case 1:
+                    lang = Languages.English;
+                    App.Language = new CultureInfo("en-US");
+                    break;
+            }
 
             App.Measurement = um;
             App.ConsiderFuel = useFuel;
             App.Methods = ta;
             App.PriceFuel = priceFuel;
             App.ConsumptionFuel = consumptionFuel;
+            RefreshListBoxs();
         }
 
         private void ShowError(string text)
@@ -105,6 +106,49 @@ namespace TransportProblemMapping.Views
             Dialog.IsOpen = true;
         }
 
+        private void RefreshListBoxs()
+        {
+            var ln = App.Language.Name;
+            switch (ln)
+            {
+                case "en-US":
+                    ListBoxLanguage.SelectedIndex = 1;
+                    break;
+                case "ru-RU":
+                    ListBoxLanguage.SelectedIndex = 0;
+                    break;
+            }
+
+            switch (App.Measurement)
+            {
+                case UnitOfMeasurement.Kilometers:
+                    ListBoxMeasurement.SelectedIndex = 1;
+                    break;
+                case UnitOfMeasurement.Meters:;
+                    ListBoxMeasurement.SelectedIndex = 0;
+                    break;
+            }
+
+            switch (App.ConsiderFuel)
+            {
+                case true:
+                    ListBoxUseFuel.SelectedIndex = 0;
+                    break;
+                case false:
+                    ListBoxUseFuel.SelectedIndex = 1;
+                    break;
+            }
+
+            switch (App.Methods)
+            {
+                case TypeAlgorithm.NorthWest:
+                    ListBoxMethods.SelectedIndex = 0;
+                    break;
+                case TypeAlgorithm.Potentials:
+                    ListBoxMethods.SelectedIndex = 1;
+                    break;
+            }
+        }
         private string ReturnString(string Attribute)
         {
             return Application.Current.FindResource(Attribute)?.ToString();

@@ -292,6 +292,7 @@ namespace TransportProblemMapping.Views
         {
             MainMap.Markers.Clear();
             Markers.Clear();
+            SolutionBox.Text = "";
         }
 
         public bool CheckedFillFields()
