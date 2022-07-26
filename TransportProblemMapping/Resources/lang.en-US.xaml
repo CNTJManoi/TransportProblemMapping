@@ -7,7 +7,7 @@
     <v:String x:Key="HelloMessage">Welcome!</v:String>
     <v:String x:Key="MainMessage1">The program calculates routes by solving transport problems on the map.</v:String>
     <v:String x:Key="MainMessage2">To switch to the map mode, open the side menu by pressing the button in the upper left corner and go to the corresponding menu.</v:String>
-    <v:String x:Key="MainMessage3">The search for a solution is realized by finding a reference plan by the method of the northwest corner and finding the best solution by the method of potentials.</v:String>
+    <v:String x:Key="MainMessage3">The search for a solution is realized by finding a reference plan by the method of the northwest and finding the best solution by the method of potentials.</v:String>
 
     <v:String x:Key="MainButton">Main Menu</v:String>
     <v:String x:Key="MapButton">Map</v:String>
@@ -45,9 +45,9 @@
     <v:String x:Key="Error5">Choose a point type!</v:String>
 
     <v:String x:Key="Error6">The fuel price is set incorrectly!</v:String>
-    <v:String x:Key="Error7">Fuel consumption is set incorrectly!</v:String>
-    <v:String x:Key="Error8">Fill in all fields!</v:String>
-    <v:String x:Key="Error9">An error occurred when determining the positions of the points. Move the dot *</v:String>
+    <v:String x:Key="Error7">Fuel consumption value is set incorrectly!</v:String>
+    <v:String x:Key="Error8">Fill all fields!</v:String>
+    <v:String x:Key="Error9">An error occurred when determining the positions of the points. Move the point *</v:String>
     <v:String x:Key="Error10">An error occurred while determining the route. You may have chosen an unsupported region.</v:String>
 
     <v:String x:Key="Confirm">Ok</v:String>
@@ -61,7 +61,7 @@
 
     <v:String x:Key="RussianLanguage">Russian</v:String>
     <v:String x:Key="EnglishLanguage">English</v:String>
-    <v:String x:Key="LanguageSettings">Language used</v:String>
+    <v:String x:Key="LanguageSettings">Language</v:String>
 
     <v:String x:Key="Yes">Yes</v:String>
     <v:String x:Key="No">No</v:String>
@@ -69,7 +69,7 @@
 
     <v:String x:Key="Northwest">Northwest method</v:String>
     <v:String x:Key="Potentials">Method of potentials</v:String>
-    <v:String x:Key="MethodSettings">The linear programming method used to find the solution</v:String>
+    <v:String x:Key="MethodSettings">The linear programming method use to find the solution</v:String>
 
     <v:String x:Key="Price">Cost</v:String>
     <v:String x:Key="GasPrice">Current price for 1 liter of gasoline</v:String>
@@ -81,4 +81,11 @@
 
     <v:String x:Key="Delete">Delete</v:String>
     <v:String x:Key="Edit">Edit</v:String>
+
+    <v:String x:Key="FuelInfo1">Total distance</v:String>
+    <v:String x:Key="FuelInfo2">Spent</v:String>
+    <v:String x:Key="FuelInfo3">fuel units</v:String>
+    <v:String x:Key="FuelInfo4">Final price</v:String>
+    <v:String x:Key="FuelInfoMeters">meters</v:String>
+    <v:String x:Key="FuelInfoKilometers">kilometers</v:String>
 </ResourceDictionary>

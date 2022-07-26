@@ -209,6 +209,8 @@ namespace TransportProblemMapping.Views
             });
             var solution = Transport.FindSolution(matrix, suppliers, shops, TypeAlgorithm.Potentials);
             var solutionMessage = "";
+            var fuelInfo = "";
+            float totalDistance = 0;
             for (i = 0; i < solution.GetLength(0); i++)
             for (j = 0; j < solution.GetLength(1); j++)
                 if (solution[i, j] != 0)
@@ -224,13 +226,31 @@ namespace TransportProblemMapping.Views
                                                              + ReturnString("Info2") + " " +
                                                              txtS.Substring(0, txtS.IndexOf("\n")) + " - "
                                                              + solution[i, j] + " " + ReturnString("Info3") + "\n";
-                    Dispatcher.Invoke(() => { AddMarker(routesMappings[i][j]); });
+                        
+                        if (App.ConsiderFuel)
+                        {
+                            if (App.Measurement == UnitOfMeasurement.Kilometers) { totalDistance += routesMappings[i][j].DistanceKilometers; }
+                            else totalDistance += routesMappings[i][j].DistanceMeters;
+                        }
+                        Dispatcher.Invoke(() => { AddMarker(routesMappings[i][j]); });
                 }
-
+            var totalPrice = 0f;
+            if (App.ConsiderFuel)
+            {
+                if (App.Measurement == UnitOfMeasurement.Meters) totalDistance /= 1000f;
+                var comsumption = (totalDistance * (App.ConsumptionFuel / 100f));
+                string typeMeasurement = ReturnString("FuelInfoMeters");
+                totalPrice = (totalDistance * (App.ConsumptionFuel / 100f)) * App.PriceFuel;
+                if (App.Measurement == UnitOfMeasurement.Kilometers) { typeMeasurement = ReturnString("FuelInfoKilometers"); }
+                else totalDistance *= 1000f;
+                fuelInfo = ReturnString("FuelInfo1") + " " + totalDistance.ToString() + " " + typeMeasurement + ". " +
+                    ReturnString("FuelInfo2") + " " + comsumption.ToString() + " " + ReturnString("FuelInfo3") + ". " +
+                    ReturnString("FuelInfo4") + " " + totalPrice.ToString() + ".";
+            }
             solutionMessage += ReturnString("Mathematical") + " " + Transport.MathematicalPrice;
             Dispatcher.Invoke(() =>
             {
-                SolutionBox.Text = solutionMessage;
+                SolutionBox.Text = solutionMessage + "\n" + fuelInfo;
                 WaitDialog.IsOpen = false;
             });
         }

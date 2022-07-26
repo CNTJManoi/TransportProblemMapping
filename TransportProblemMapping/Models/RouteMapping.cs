@@ -9,7 +9,7 @@ namespace TransportProblemMapping.Models
         {
             RouteMarkers = Routes;
             DistanceMeters = Distance;
-            DistanceKilometers = (float)Math.Round(Distance / 1000, 2);
+            DistanceKilometers = (float)Math.Round(Distance / 1000f, 2);
         }
 
         public GMapRoute RouteMarkers { get; }

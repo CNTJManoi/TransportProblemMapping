@@ -30,9 +30,10 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-
-                    mp.ShowMessage(ReturnString("Error9") + startStr +
-                                   "*");
+                    mp.Dispatcher.Invoke(() => {
+                        mp.ShowMessage(ReturnString("Error9") + startStr +
+               "*");
+                    });
                     return null;
                 }
 
@@ -42,8 +43,10 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-                    mp.ShowMessage(ReturnString("Error9") + endStr +
-                                   "*");
+                    mp.Dispatcher.Invoke(() => {
+                        mp.ShowMessage(ReturnString("Error9") + startStr +
+               "*");
+                    });
                     return null;
                 }
 
@@ -53,8 +56,10 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-                    mp.ShowMessage(
-                        ReturnString("Error10"));
+                    mp.Dispatcher.Invoke(() => {
+                        mp.ShowMessage(
+    ReturnString("Error10"));
+                    });
                     return null;
                 }
 
