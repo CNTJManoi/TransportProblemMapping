@@ -39,7 +39,7 @@
                         </Grid.RowDefinitions>
                         <materialDesign:ColorZone VerticalAlignment="Stretch">
                             <Image VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Source="/Resources/AlekseyKorovchenko.jpg" />
+                                   Source="/TransportProblemMapping;component/Resources/AlekseyKorovchenko.jpg" />
                         </materialDesign:ColorZone>
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="{DynamicResource AlekseyK}" FontSize="16" />
@@ -105,7 +105,7 @@
                         </Grid.RowDefinitions>
                         <materialDesign:ColorZone VerticalAlignment="Stretch">
                             <Image VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Source="/Resources/LarisaNikonova.jpg" />
+                                   Source="/TransportProblemMapping;component/Resources/LarisaNikonova.jpg" />
                         </materialDesign:ColorZone>
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="{DynamicResource LarisaN}" FontSize="16" />
@@ -171,7 +171,7 @@
                         </Grid.RowDefinitions>
                         <materialDesign:ColorZone VerticalAlignment="Stretch">
                             <Image VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Source="/Resources/AlekseyDzyuba.jpg" />
+                                   Source="/TransportProblemMapping;component/Resources/AlekseyDzyuba.jpg" />
                         </materialDesign:ColorZone>
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="{DynamicResource AlekseyD}" FontSize="16" />
