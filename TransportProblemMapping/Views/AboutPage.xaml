@@ -3,7 +3,226 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid />
+             d:DesignHeight="450" d:DesignWidth="800" FontFamily="Gotham Pro">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="265" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" Grid.RowSpan="2">
+            <TextBlock Text="{DynamicResource Leader}" HorizontalAlignment="Center" Margin="10" FontSize="20" />
+            <materialDesign:Flipper
+                Style="{StaticResource MaterialDesignCardFlipper}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <materialDesign:Flipper.FrontContent>
+                    <Grid Height="256" Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone VerticalAlignment="Stretch">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   Source="/Resources/AlekseyKorovchenko.jpg" />
+                        </materialDesign:ColorZone>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{DynamicResource AlekseyK}" FontSize="16" />
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}" Margin="0 4 0 0"
+                                    Content="{DynamicResource MoreInfo}" Cursor="Hand" />
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Flipper.FrontContent>
+                <materialDesign:Flipper.BackContent>
+                    <Grid
+                        Height="256"
+                        Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="Auto" />
+                            <RowDefinition
+                                Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone
+                            Mode="SecondaryMid"
+                            Padding="6">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                    <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                </Button>
+                                <TextBlock FontSize="10" TextAlignment="Center" Text="{DynamicResource Group}"
+                                           TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Margin="10,0,0,0" />
+                            </StackPanel>
+                        </materialDesign:ColorZone>
+                        <Grid
+                            Grid.Row="1"
+                            Margin="0 6 0 0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Width="172">
+                            <StackPanel>
+                                <TextBlock FontSize="14" TextAlignment="Left" Text="{DynamicResource Lider1}"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Flipper.BackContent>
+            </materialDesign:Flipper>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="{DynamicResource Designer}" HorizontalAlignment="Center" Margin="10" FontSize="20" />
+            <materialDesign:Flipper
+                Style="{StaticResource MaterialDesignCardFlipper}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <materialDesign:Flipper.FrontContent>
+                    <Grid Height="256" Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone VerticalAlignment="Stretch">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   Source="/Resources/LarisaNikonova.jpg" />
+                        </materialDesign:ColorZone>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{DynamicResource LarisaN}" FontSize="16" />
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}" Margin="0 4 0 0"
+                                    Content="{DynamicResource MoreInfo}" Cursor="Hand" />
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Flipper.FrontContent>
+                <materialDesign:Flipper.BackContent>
+                    <Grid
+                        Height="256"
+                        Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="Auto" />
+                            <RowDefinition
+                                Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone
+                            Mode="SecondaryMid"
+                            Padding="6">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                    <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                </Button>
+                                <TextBlock FontSize="10" TextAlignment="Center" Text="{DynamicResource Group}"
+                                           TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Margin="10,0,0,0" />
+                            </StackPanel>
+                        </materialDesign:ColorZone>
+                        <Grid
+                            Grid.Row="1"
+                            Margin="0 6 0 0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Width="172">
+                            <StackPanel>
+                                <TextBlock FontSize="14" TextAlignment="Left" Text="{DynamicResource Designer1}"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Flipper.BackContent>
+            </materialDesign:Flipper>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <TextBlock Text="{DynamicResource Programmer}" HorizontalAlignment="Center" Margin="10" FontSize="20" />
+            <materialDesign:Flipper
+                Style="{StaticResource MaterialDesignCardFlipper}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <materialDesign:Flipper.FrontContent>
+                    <Grid Height="256" Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone VerticalAlignment="Stretch">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   Source="/Resources/AlekseyDzyuba.jpg" />
+                        </materialDesign:ColorZone>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{DynamicResource AlekseyD}" FontSize="16" />
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}" Margin="0 4 0 0"
+                                    Content="{DynamicResource MoreInfo}" Cursor="Hand" />
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Flipper.FrontContent>
+                <materialDesign:Flipper.BackContent>
+                    <Grid
+                        Height="256"
+                        Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="Auto" />
+                            <RowDefinition
+                                Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone
+                            Mode="SecondaryMid"
+                            Padding="6">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                    <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                </Button>
+                                <TextBlock FontSize="10" TextAlignment="Center" Text="{DynamicResource Group}"
+                                           TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Margin="10,0,0,0" />
+                            </StackPanel>
+                        </materialDesign:ColorZone>
+                        <Grid
+                            Grid.Row="1"
+                            Margin="0 6 0 0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Width="172">
+                            <StackPanel>
+                                <TextBlock FontSize="14" TextAlignment="Left" Text="{DynamicResource Programmer1}"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Flipper.BackContent>
+            </materialDesign:Flipper>
+        </StackPanel>
+    </Grid>
 </UserControl>

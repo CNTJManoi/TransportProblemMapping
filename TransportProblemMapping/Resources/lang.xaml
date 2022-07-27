@@ -88,4 +88,29 @@
     <v:String x:Key="FuelInfo4">Итоговая цена</v:String>
     <v:String x:Key="FuelInfoMeters">метров</v:String>
     <v:String x:Key="FuelInfoKilometers">километров</v:String>
+
+    <v:String x:Key="Leader">Лидер/Программист</v:String>
+    <v:String x:Key="Designer">Дизайнер</v:String>
+    <v:String x:Key="Programmer">Программист</v:String>
+    <v:String x:Key="MoreInfo">Подробнее</v:String>
+
+    <v:String x:Key="AlekseyK">Алексей Коровченко</v:String>
+    <v:String x:Key="LarisaN">Лариса Никонова</v:String>
+    <v:String x:Key="AlekseyD">Алексей Дзюба</v:String>
+
+    <v:String x:Key="Group">Студент группы БИСТ-212</v:String>
+    <v:String xml:space="preserve" x:Key="Lider1">- Разработка идеи приложения;
+- Разработка основной логики;
+- Реализация карты и методов вычисления маршрутов;
+- Реализация функций вычисления топлива машин;
+- Разработка настроек.</v:String>
+    <v:String xml:space="preserve" x:Key="Designer1">- Разработка иконки;
+- Разработка дизайна всех страниц;
+- Реализация текстовой части;
+- Перевод текста на английский язык;
+- Вёрстка XAML.</v:String>
+    <v:String xml:space="preserve" x:Key="Programmer1">- Разработка метода северо-западного угла;
+- Разработка метода потенциалов;
+- Помощь в разработке методов вычисления маршрутов на карте;
+- Помощь в вёрстке XAML.</v:String>
 </ResourceDictionary>

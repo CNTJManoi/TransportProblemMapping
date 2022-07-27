@@ -88,4 +88,25 @@
     <v:String x:Key="FuelInfo4">Final price</v:String>
     <v:String x:Key="FuelInfoMeters">meters</v:String>
     <v:String x:Key="FuelInfoKilometers">kilometers</v:String>
+
+    <v:String x:Key="Leader">Leader/Programmer</v:String>
+    <v:String x:Key="Designer">Designer</v:String>
+    <v:String x:Key="Programmer">Programmer</v:String>
+    <v:String x:Key="MoreInfo">More info</v:String>
+
+    <v:String x:Key="AlekseyK">Alexey Korovchenko</v:String>
+    <v:String x:Key="LarisaN">Larisa Nikonova</v:String>
+    <v:String x:Key="AlekseyD">Alexey Dzyuba</v:String>
+
+    <v:String x:Key="Group">BIST-212 student</v:String>
+    <v:String xml:space="preserve" x:Key="Lider1">- Development of the application idea;
+- Development of the basic logic;
+- Implementation of the cars fuel calculation functions;
+- Development of the settings.</v:String>
+    <v:String xml:space="preserve" x:Key="Designer1">- Icon design;
+- Designing all pages;
+- Implementation of the text part.</v:String>
+    <v:String xml:space="preserve" x:Key="Programmer1">- Developing the northwest method;
+- Development of the potentials method;
+- Help develop methods for calculating routes on the map.</v:String>
 </ResourceDictionary>

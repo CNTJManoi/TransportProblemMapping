@@ -45,12 +45,6 @@ namespace TransportProblemMapping.Views
             Markers = new List<GMapMarker>();
 
             Transport = new TransportProblem();
-            ChangeLanguage();
-        }
-
-        private void LanguageChanged(object sender, EventArgs e)
-        {
-            ClearAll();
         }
 
         #region Properties
@@ -63,7 +57,10 @@ namespace TransportProblemMapping.Views
         #endregion
 
         #region Events
-
+        private void LanguageChanged(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
         private void MainMap_MouseEnter(object sender, MouseEventArgs e)
         {
             MainMap.Focus();
@@ -296,10 +293,6 @@ namespace TransportProblemMapping.Views
         private void AddMarkerOnMap(GMapMarker gm)
         {
             MainMap.Markers.Add(gm);
-        }
-
-        private void ChangeLanguage()
-        {
         }
 
         public void DeleteMarker(GMapMarker gm)
