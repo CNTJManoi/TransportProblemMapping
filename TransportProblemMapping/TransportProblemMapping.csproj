@@ -263,6 +263,10 @@
   <ItemGroup>
     <Resource Include="Resources\AlekseyDzyuba.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logoFaculty.png" />
+    <Resource Include="Resources\logoUniversity.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
