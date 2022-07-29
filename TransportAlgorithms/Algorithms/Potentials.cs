@@ -7,13 +7,22 @@ namespace TransportAlgorithms.Algorithms
 {
     public class Potentials : IAlgorithm
     {
+        #region Fields
         private readonly double[,] Matrix;
         private Point[] Allowed;
         private bool isFound;
         private int[] Shops;
         private double[,] Solution;
         private int[] Suppliers;
+        #endregion
 
+        /// <summary>
+        /// Поиск оптимального плана методом наименьших квадратов (метод потенциалов)
+        /// </summary>
+        /// <param name="Matr">Матрица цен</param>
+        /// <param name="Suppliers">Возможности складов</param>
+        /// <param name="Shops">Потребности потребителей</param>
+        /// <param name="Solut">Найденное опорное решение</param>
         public Potentials(double[,] Matr, int[] Suppliers, int[] Shops, double[,] Solut)
         {
             Matrix = Matr;
@@ -23,7 +32,8 @@ namespace TransportAlgorithms.Algorithms
             isFound = false;
             ZeroToNull();
         }
-
+        
+        #region IAlgorithm
         public void Clear()
         {
             Solution = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
@@ -47,16 +57,12 @@ namespace TransportAlgorithms.Algorithms
 
         public double[,] ReturnSolution()
         {
-            // расчитываем Ui и Vi
-            //подготовка
             int i = 0, j = 0;
             double[,] HelpMatr = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
             for (i = 0; i < Matrix.GetLength(0); i++)
             for (j = 0; j < Matrix.GetLength(1); j++)
                 if (Solution[i, j] == Solution[i, j]) HelpMatr[i, j] = Matrix[i, j];
                 else HelpMatr[i, j] = float.NaN;
-
-            //расчёт
             double[] U = new double[Matrix.GetLength(0)];
             double[] V = new double[Matrix.GetLength(1)];
             FindUV(ref U, ref V, HelpMatr);
@@ -83,7 +89,9 @@ namespace TransportAlgorithms.Algorithms
             NullToZero();
             return Solution;
         }
+        #endregion
 
+        #region Additional for method Potentials
         private void FindUV(ref double[] U, ref double[] V, double[,] HelpMatr)
         {
             var U1 = new bool[Matrix.GetLength(0)];
@@ -139,7 +147,6 @@ namespace TransportAlgorithms.Algorithms
                 }
 
             }
-            int rt = 0;
         }
 
         private bool AllPositive(double[,] m)
@@ -194,7 +201,6 @@ namespace TransportAlgorithms.Algorithms
                         Allowed[k].Y = j;
                         k++;
                     }
-                    // заодно ищем макс по модулю отр элемент
                     if (sm[i, j] < min)
                     {
                         min = sm[i, j];
@@ -202,7 +208,6 @@ namespace TransportAlgorithms.Algorithms
                         minInd.Y = j;
                     }
                 }
-            // Ищем цикл
             Allowed[Allowed.Length - 1] = minInd;
             Point[] Cycle = GetCycle((int)minInd.X, (int)minInd.Y);
             double[] Cycles = new double[Cycle.Length];
@@ -210,12 +215,6 @@ namespace TransportAlgorithms.Algorithms
             for (int i = 0; i < bCycles.Length; i++)
                 bCycles[i] = i == bCycles.Length - 1 ? false : true;
             min = float.MaxValue;
-            /* проблема в следующем:
-             * цикл мы находим правильно
-             * а вот посчитать правильно не можем
-             * ниже поиск минимального элемента
-             */
-            // поиск минимального
             for (int i = 0; i < Cycle.Length; i++)
             {
                 Cycles[i] = m[(int)Cycle[i].X, (int)Cycle[i].Y];
@@ -226,8 +225,6 @@ namespace TransportAlgorithms.Algorithms
                 }
                 if (Cycles[i] != Cycles[i]) Cycles[i] = 0;
             }
-            int point1 = 0;
-            // вычитание-прибавление
             for (int i = 0; i < Cycle.Length; i++)
             {
                 if (i % 2 == 0)
@@ -266,5 +263,6 @@ namespace TransportAlgorithms.Algorithms
                 }
             }
         }
+        #endregion
     }
 }

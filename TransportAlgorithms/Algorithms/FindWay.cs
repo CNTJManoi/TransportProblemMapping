@@ -3,7 +3,10 @@ using System.Windows;
 
 namespace TransportAlgorithms.Algorithms
 {
-    internal class FindWay
+    /// <summary>
+    /// Класс поиска направления перемещения товара в транспортной задаче (дополнительный аспект)
+    /// </summary>
+    class FindWay
     {
         private readonly Point Begining;
 
@@ -46,7 +49,6 @@ namespace TransportAlgorithms.Algorithms
 
             var fwu = this;
             Childrens = new FindWay[Count];
-            //Point[] ss = new Point[mAllowed.Length];
             var k = 0;
             for (var i = 0; i < Count; i++)
             {

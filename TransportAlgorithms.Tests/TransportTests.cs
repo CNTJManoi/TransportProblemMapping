@@ -6,6 +6,9 @@ namespace TransportAlgorithms.Tests
     [TestClass]
     public class TransportTests
     {
+        /// <summary>
+        /// Тест для проверки корректности оптимального решения методом наименьших квадратов (метод потенциалов)
+        /// </summary>
         [TestMethod]
         public void TestTransportPotentials()
         {
@@ -31,6 +34,9 @@ namespace TransportAlgorithms.Tests
                 }
             }
         }
+        /// <summary>
+        /// Тест для проверки корректного поиска опорного плана решения транспортной задачи методом северо-западного угла
+        /// </summary>
         [TestMethod]
         public void TestTransportNorthWest()
         {

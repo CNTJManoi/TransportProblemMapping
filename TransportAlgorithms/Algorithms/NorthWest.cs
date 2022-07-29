@@ -4,12 +4,20 @@ namespace TransportAlgorithms.Algorithms
 {
     public class NorthWest : IAlgorithm
     {
+        #region Fields
         private readonly double[,] Matrix;
         private readonly int[] Shops;
         private readonly int[] Suppliers;
         private bool isFound;
         private double[,] Solution;
+        #endregion
 
+        /// <summary>
+        /// Поиск опорного плана методом северо-западного угла
+        /// </summary>
+        /// <param name="Matr">Матрица цен</param>
+        /// <param name="Suppliers">Возможности складов</param>
+        /// <param name="Shops">Потребности потребителей</param>
         public NorthWest(double[,] Matr, int[] Suppliers, int[] Shops)
         {
             Matrix = Matr;
@@ -18,6 +26,7 @@ namespace TransportAlgorithms.Algorithms
             Clear();
         }
 
+        #region IAlgorithm
         public void Clear()
         {
             Solution = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
@@ -58,10 +67,13 @@ namespace TransportAlgorithms.Algorithms
             isFound = true;
             return Solution;
         }
+        #endregion
 
+        #region Additional for NorthWest method
         private bool isEmpty(int[] arr)
         {
             return Array.TrueForAll(arr, delegate(int x) { return x == 0; });
         }
+        #endregion
     }
 }
