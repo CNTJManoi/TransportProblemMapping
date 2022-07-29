@@ -57,10 +57,9 @@ namespace TransportAlgorithms.Algorithms
 
         public double[,] ReturnSolution()
         {
-            int i = 0, j = 0;
             double[,] HelpMatr = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
-            for (i = 0; i < Matrix.GetLength(0); i++)
-            for (j = 0; j < Matrix.GetLength(1); j++)
+            for (int i = 0; i < Matrix.GetLength(0); i++)
+            for (int j = 0; j < Matrix.GetLength(1); j++)
                 if (Solution[i, j] == Solution[i, j]) HelpMatr[i, j] = Matrix[i, j];
                 else HelpMatr[i, j] = float.NaN;
             double[] U = new double[Matrix.GetLength(0)];
@@ -70,8 +69,8 @@ namespace TransportAlgorithms.Algorithms
             while (!AllPositive(SMatr))
             {
                 Roll(ref Solution, SMatr);
-                for (i = 0; i < Matrix.GetLength(0); i++)
-                for (j = 0; j < Matrix.GetLength(1); j++)
+                for (int i = 0; i < Matrix.GetLength(0); i++)
+                for (int j = 0; j < Matrix.GetLength(1); j++)
                 {
                     if (Solution[i, j] == float.PositiveInfinity)
                     {

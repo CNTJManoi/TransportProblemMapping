@@ -19,7 +19,6 @@ namespace TransportProblemMapping.Views
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             var um = UnitOfMeasurement.Meters;
-            var lang = Languages.Russian;
             var useFuel = true;
             var ta = TypeAlgorithm.NorthWest;
             var priceFuel = 57.25f;
@@ -83,11 +82,9 @@ namespace TransportProblemMapping.Views
             switch (ListBoxLanguage.SelectedIndex)
             {
                 case 0:
-                    lang = Languages.Russian;
                     App.Language = new CultureInfo("ru-RU");
                     break;
                 case 1:
-                    lang = Languages.English;
                     App.Language = new CultureInfo("en-US");
                     break;
             }

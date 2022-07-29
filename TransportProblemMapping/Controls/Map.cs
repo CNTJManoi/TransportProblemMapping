@@ -2,8 +2,8 @@
 
 namespace TransportProblemMapping.Controls
 {
-    internal class Map : GMapControl
+    class Map : GMapControl
     {
-        public long ElapsedMilliseconds;
+
     }
 }

@@ -44,7 +44,7 @@ namespace TransportProblemMapping.Logic
                 catch
                 {
                     mp.Dispatcher.Invoke(() => {
-                        mp.ShowMessage(ReturnString("Error9") + startStr +
+                        mp.ShowMessage(ReturnString("Error9") + endStr +
                "*");
                     });
                     return null;
