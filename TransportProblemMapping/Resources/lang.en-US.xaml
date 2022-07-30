@@ -49,6 +49,7 @@
     <v:String x:Key="Error8">Fill all fields!</v:String>
     <v:String x:Key="Error9">An error occurred when determining the positions of the points. Move the point *</v:String>
     <v:String x:Key="Error10">An error occurred while determining the route. You may have chosen an unsupported region.</v:String>
+    <v:String x:Key="Error11">There are no service files for complex routes. Contact the app developer.</v:String>
 
     <v:String x:Key="Confirm">Ok</v:String>
     <v:String x:Key="CalculationBegin">Routes in the calculation process. Please wait.</v:String>

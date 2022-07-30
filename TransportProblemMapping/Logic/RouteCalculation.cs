@@ -16,6 +16,12 @@ namespace TransportProblemMapping.Logic
         public RouteMapping GetRoute(float sh1, float dl1, float sh2, float dl2, MapPage mp, string startStr,
             string endStr)
         {
+            if (!File.Exists(@"Data\siberian-fed-district-latest.routerdb"))
+            {
+                mp.Dispatcher.Invoke(() => { mp.ShowMessage(ReturnString("Error11")); });
+                return null;
+            }
+
             using (var stream = new FileInfo(@"Data\siberian-fed-district-latest.routerdb").Open(FileMode.Open))
             {
                 var routeDb = RouterDb.Deserialize(stream);
