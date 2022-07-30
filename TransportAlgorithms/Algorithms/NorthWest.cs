@@ -20,9 +20,20 @@ namespace TransportAlgorithms.Algorithms
 
         #region Additional for NorthWest method
 
-        private bool isEmpty(int[] arr)
+        private bool isEmpty(float[] arr)
         {
-            return Array.TrueForAll(arr, delegate(int x) { return x == 0; });
+            return Array.TrueForAll(arr, delegate(float x) { return x == 0; });
+        }
+
+        private void NanToEmpty(float[,] outArr)
+        {
+            var ASize = Matrix.GetLength(0);
+            var BSize = Matrix.GetLength(1);
+            int i = 0, j = 0;
+            for (i = 0; i < ASize; i++)
+            for (j = 0; j < BSize; j++)
+                if (outArr[i, j] == 0)
+                    outArr[i, j] = float.NaN;
         }
 
         #endregion
@@ -62,21 +73,31 @@ namespace TransportAlgorithms.Algorithms
 
         public double[,] ReturnSolution()
         {
-            var Ahelp = Suppliers;
-            var Bhelp = Shops;
+            var ASize = Matrix.GetLength(0);
+            var BSize = Matrix.GetLength(1);
+            var Ahelp = new float[ASize];
+            var Bhelp = new float[BSize];
+            for (var z = 0; z < ASize; z++) Ahelp[z] = Suppliers[z];
+            for (var z = 0; z < BSize; z++) Bhelp[z] = Shops[z];
             int i = 0, j = 0;
+            var outArr = new float[ASize, BSize];
+            NanToEmpty(outArr);
+            //МЯСО
             while (!(isEmpty(Ahelp) && isEmpty(Bhelp)))
             {
                 var Dif = Math.Min(Ahelp[i], Bhelp[j]);
-                Solution[i, j] = Dif;
+                outArr[i, j] = Dif;
                 Ahelp[i] -= Dif;
                 Bhelp[j] -= Dif;
-                if (Ahelp[i] == 0 && Bhelp[j] == 0 && j + 1 < Solution.GetLength(1)) Solution[i, j + 1] = 0;
+                if (Ahelp[i] == 0 && Bhelp[j] == 0 && j + 1 < BSize) outArr[i, j + 1] = 0;
                 if (Ahelp[i] == 0) i++;
                 if (Bhelp[j] == 0) j++;
             }
 
-            isFound = true;
+            Solution = new double[outArr.GetLength(0), outArr.GetLength(1)];
+            for (var z = 0; z < outArr.GetLength(0); z++)
+            for (var x = 0; x < outArr.GetLength(1); x++)
+                Solution[z, x] = outArr[z, x];
             return Solution;
         }
 

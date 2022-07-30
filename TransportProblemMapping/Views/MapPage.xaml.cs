@@ -51,7 +51,7 @@ namespace TransportProblemMapping.Views
         private RouteCalculation Rc { get; }
         private PointLatLng PointStart { get; }
         private List<GMapMarker> Markers { get; }
-        private TransportProblem Transport { get; }
+        private TransportProblem Transport { get; set; }
 
         #endregion
 
@@ -173,7 +173,7 @@ namespace TransportProblemMapping.Views
                         mRoute.ZIndex = numberRoute;
                     }
                     numberRoute++;
-                    matrix[i, j] = routeMap.DistanceMeters;
+                    matrix[i, j] = routeMap.DistanceKilometers;
                     routesMappings[i].Add(new RouteMapping(mRoute, routeMap.DistanceMeters));
                     j++;
                 }
@@ -205,6 +205,7 @@ namespace TransportProblemMapping.Views
             {
                 foreach (var marker in Markers) AddMarkerOnMap(marker);
             });
+            Transport = new TransportProblem();
             var solution = Transport.FindSolution(matrix, suppliers, shops, TypeAlgorithm.Potentials);
             var solutionMessage = "";
             var fuelInfo = "";

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TransportAlgorithms.Algorithms;
 
 namespace TransportAlgorithms
@@ -35,6 +36,9 @@ namespace TransportAlgorithms
                     break;
                 case TypeAlgorithm.Potentials:
                     NorthWest = new NorthWest(Matrix, suppliers, shops);
+                    for (var i = 0; i < Matrix.GetLength(0); i++)
+                    for (var j = 0; j < Matrix.GetLength(1); j++)
+                        Matrix[i, j] = (int)Math.Round(Matrix[i, j]);
                     Potentials = new Potentials(Matrix, Suppliers, Shops, NorthWest.ReturnSolution());
                     Solution = Potentials.ReturnSolution();
                     MathematicalPrice = Potentials.GetMathematicalModel();
