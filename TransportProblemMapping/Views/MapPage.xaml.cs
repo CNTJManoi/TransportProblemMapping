@@ -5,11 +5,9 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Markup;
 using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsPresentation;
-using Itinero.Attributes;
 using TransportAlgorithms;
 using TransportProblemMapping.Logic;
 using TransportProblemMapping.Markers;
@@ -22,6 +20,7 @@ namespace TransportProblemMapping.Views
         #region Fields
 
         private Thread calcThread;
+
         #endregion
 
         public MapPage()
@@ -57,10 +56,12 @@ namespace TransportProblemMapping.Views
         #endregion
 
         #region Events
+
         private void LanguageChanged(object sender, EventArgs e)
         {
             ClearAll();
         }
+
         private void MainMap_MouseEnter(object sender, MouseEventArgs e)
         {
             MainMap.Focus();
@@ -182,12 +183,12 @@ namespace TransportProblemMapping.Views
             }
 
             i = 0;
-            string pr = ReturnString("Product");
+            var pr = ReturnString("Product");
             foreach (var markerShop in shopMarkers)
                 Dispatcher.Invoke(() =>
                 {
                     var txtShop = ((CustomMarkerRed)markerShop.Shape).Label.ToString();
-                    shops[i] = int.Parse(txtShop.Substring(txtShop.IndexOf(pr) + (pr.Length+1)));
+                    shops[i] = int.Parse(txtShop.Substring(txtShop.IndexOf(pr) + pr.Length + 1));
                     i++;
                 });
 
@@ -196,7 +197,7 @@ namespace TransportProblemMapping.Views
                 Dispatcher.Invoke(() =>
                 {
                     var txtWarehouse = (markerWarehouse.Shape as CustomMarkerRed).Label.ToString();
-                    suppliers[i] = int.Parse(txtWarehouse.Substring(txtWarehouse.IndexOf(pr) + (pr.Length + 1)));
+                    suppliers[i] = int.Parse(txtWarehouse.Substring(txtWarehouse.IndexOf(pr) + pr.Length + 1));
                     i++;
                 });
 
@@ -220,30 +221,35 @@ namespace TransportProblemMapping.Views
                         txtS = ((CustomMarkerRed)shopMarkers[j].Shape).Label.Content.ToString();
                     });
                     solutionMessage += ReturnString("Info1") + " " + txtW.Substring(0, txtW.IndexOf("\n")) + " "
-                                                             + ReturnString("Info2") + " " +
-                                                             txtS.Substring(0, txtS.IndexOf("\n")) + " - "
-                                                             + solution[i, j] + " " + ReturnString("Info3") + "\n";
-                        
-                        if (App.ConsiderFuel)
-                        {
-                            if (App.Measurement == UnitOfMeasurement.Kilometers) { totalDistance += routesMappings[i][j].DistanceKilometers; }
-                            else totalDistance += routesMappings[i][j].DistanceMeters;
-                        }
-                        Dispatcher.Invoke(() => { AddMarker(routesMappings[i][j]); });
+                                       + ReturnString("Info2") + " " +
+                                       txtS.Substring(0, txtS.IndexOf("\n")) + " - "
+                                       + solution[i, j] + " " + ReturnString("Info3") + "\n";
+
+                    if (App.ConsiderFuel)
+                    {
+                        if (App.Measurement == UnitOfMeasurement.Kilometers)
+                            totalDistance += routesMappings[i][j].DistanceKilometers;
+                        else totalDistance += routesMappings[i][j].DistanceMeters;
+                    }
+
+                    Dispatcher.Invoke(() => { AddMarker(routesMappings[i][j]); });
                 }
+
             var totalPrice = 0f;
             if (App.ConsiderFuel)
             {
                 if (App.Measurement == UnitOfMeasurement.Meters) totalDistance /= 1000f;
-                var comsumption = (totalDistance * (App.ConsumptionFuel / 100f));
-                string typeMeasurement = ReturnString("FuelInfoMeters");
-                totalPrice = (totalDistance * (App.ConsumptionFuel / 100f)) * App.PriceFuel;
-                if (App.Measurement == UnitOfMeasurement.Kilometers) { typeMeasurement = ReturnString("FuelInfoKilometers"); }
+                var comsumption = totalDistance * (App.ConsumptionFuel / 100f);
+                var typeMeasurement = ReturnString("FuelInfoMeters");
+                totalPrice = totalDistance * (App.ConsumptionFuel / 100f) * App.PriceFuel;
+                if (App.Measurement == UnitOfMeasurement.Kilometers)
+                    typeMeasurement = ReturnString("FuelInfoKilometers");
                 else totalDistance *= 1000f;
-                fuelInfo = ReturnString("FuelInfo1") + " " + totalDistance.ToString() + " " + typeMeasurement + ". " +
-                    ReturnString("FuelInfo2") + " " + comsumption.ToString() + " " + ReturnString("FuelInfo3") + ". " +
-                    ReturnString("FuelInfo4") + " " + totalPrice.ToString() + ".";
+                fuelInfo = ReturnString("FuelInfo1") + " " + totalDistance + " " + typeMeasurement + ". " +
+                           ReturnString("FuelInfo2") + " " + comsumption + " " + ReturnString("FuelInfo3") + ". " +
+                           ReturnString("FuelInfo4") + " " + totalPrice + ".";
             }
+
             solutionMessage += ReturnString("Mathematical") + " " + Transport.MathematicalPrice;
             Dispatcher.Invoke(() =>
             {
@@ -335,6 +341,7 @@ namespace TransportProblemMapping.Views
         {
             return Application.Current.FindResource(Attribute)?.ToString();
         }
+
         #endregion
     }
 }

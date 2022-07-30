@@ -30,9 +30,10 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-                    mp.Dispatcher.Invoke(() => {
+                    mp.Dispatcher.Invoke(() =>
+                    {
                         mp.ShowMessage(ReturnString("Error9") + startStr +
-               "*");
+                                       "*");
                     });
                     return null;
                 }
@@ -43,9 +44,10 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-                    mp.Dispatcher.Invoke(() => {
+                    mp.Dispatcher.Invoke(() =>
+                    {
                         mp.ShowMessage(ReturnString("Error9") + endStr +
-               "*");
+                                       "*");
                     });
                     return null;
                 }
@@ -56,9 +58,10 @@ namespace TransportProblemMapping.Logic
                 }
                 catch
                 {
-                    mp.Dispatcher.Invoke(() => {
+                    mp.Dispatcher.Invoke(() =>
+                    {
                         mp.ShowMessage(
-    ReturnString("Error10"));
+                            ReturnString("Error10"));
                     });
                     return null;
                 }
@@ -74,6 +77,7 @@ namespace TransportProblemMapping.Logic
                 return new RouteMapping(new GMapRoute(put), route.TotalDistance);
             }
         }
+
         private string ReturnString(string Attribute)
         {
             return Application.Current.FindResource(Attribute)?.ToString();

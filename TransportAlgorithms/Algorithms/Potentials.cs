@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 
 namespace TransportAlgorithms.Algorithms
 {
     public class Potentials : IAlgorithm
     {
-        #region Fields
-        private readonly double[,] Matrix;
-        private Point[] Allowed;
-        private bool isFound;
-        private int[] Shops;
-        private double[,] Solution;
-        private int[] Suppliers;
-        #endregion
-
         /// <summary>
-        /// Поиск оптимального плана методом наименьших квадратов (метод потенциалов)
+        ///     Поиск оптимального плана методом наименьших квадратов (метод потенциалов)
         /// </summary>
         /// <param name="Matr">Матрица цен</param>
         /// <param name="Suppliers">Возможности складов</param>
@@ -32,8 +21,20 @@ namespace TransportAlgorithms.Algorithms
             isFound = false;
             ZeroToNull();
         }
-        
+
+        #region Fields
+
+        private readonly double[,] Matrix;
+        private Point[] Allowed;
+        private bool isFound;
+        private int[] Shops;
+        private double[,] Solution;
+        private int[] Suppliers;
+
+        #endregion
+
         #region IAlgorithm
+
         public void Clear()
         {
             Solution = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
@@ -57,20 +58,20 @@ namespace TransportAlgorithms.Algorithms
 
         public double[,] ReturnSolution()
         {
-            double[,] HelpMatr = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
-            for (int i = 0; i < Matrix.GetLength(0); i++)
-            for (int j = 0; j < Matrix.GetLength(1); j++)
+            var HelpMatr = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
+            for (var i = 0; i < Matrix.GetLength(0); i++)
+            for (var j = 0; j < Matrix.GetLength(1); j++)
                 if (Solution[i, j] == Solution[i, j]) HelpMatr[i, j] = Matrix[i, j];
                 else HelpMatr[i, j] = float.NaN;
-            double[] U = new double[Matrix.GetLength(0)];
-            double[] V = new double[Matrix.GetLength(1)];
+            var U = new double[Matrix.GetLength(0)];
+            var V = new double[Matrix.GetLength(1)];
             FindUV(ref U, ref V, HelpMatr);
-            double[,] SMatr = MakeSMatr(HelpMatr, U, V);
+            var SMatr = MakeSMatr(HelpMatr, U, V);
             while (!AllPositive(SMatr))
             {
                 Roll(ref Solution, SMatr);
-                for (int i = 0; i < Matrix.GetLength(0); i++)
-                for (int j = 0; j < Matrix.GetLength(1); j++)
+                for (var i = 0; i < Matrix.GetLength(0); i++)
+                for (var j = 0; j < Matrix.GetLength(1); j++)
                 {
                     if (Solution[i, j] == float.PositiveInfinity)
                     {
@@ -78,9 +79,11 @@ namespace TransportAlgorithms.Algorithms
                         Solution[i, j] = 0;
                         continue;
                     }
+
                     if (Solution[i, j] == Solution[i, j]) HelpMatr[i, j] = Matrix[i, j];
                     else HelpMatr[i, j] = float.NaN;
                 }
+
                 FindUV(ref U, ref V, HelpMatr);
                 SMatr = MakeSMatr(HelpMatr, U, V);
             }
@@ -88,9 +91,11 @@ namespace TransportAlgorithms.Algorithms
             NullToZero();
             return Solution;
         }
+
         #endregion
 
         #region Additional for method Potentials
+
         private void FindUV(ref double[] U, ref double[] V, double[,] HelpMatr)
         {
             var U1 = new bool[Matrix.GetLength(0)];
@@ -99,15 +104,17 @@ namespace TransportAlgorithms.Algorithms
             var V2 = new bool[Matrix.GetLength(1)];
             while (!(AllTrue(V1) && AllTrue(U1)))
             {
-                int i = -1;
-                int j = -1;
-                for (int i1 = Matrix.GetLength(1) - 1; i1 >= 0; i1--)
-                    if (V1[i1] && !V2[i1]) i = i1;
-                for (int j1 = Matrix.GetLength(0) - 1; j1 >= 0; j1--)
-                    if (U1[j1] && !U2[j1]) j = j1;
+                var i = -1;
+                var j = -1;
+                for (var i1 = Matrix.GetLength(1) - 1; i1 >= 0; i1--)
+                    if (V1[i1] && !V2[i1])
+                        i = i1;
+                for (var j1 = Matrix.GetLength(0) - 1; j1 >= 0; j1--)
+                    if (U1[j1] && !U2[j1])
+                        j = j1;
 
-                if ((j == -1) && (i == -1))
-                    for (int i1 = Matrix.GetLength(1) - 1; i1 >= 0; i1--)
+                if (j == -1 && i == -1)
+                    for (var i1 = Matrix.GetLength(1) - 1; i1 >= 0; i1--)
                         if (!V1[i1] && !V2[i1])
                         {
                             i = i1;
@@ -115,8 +122,9 @@ namespace TransportAlgorithms.Algorithms
                             V1[i] = true;
                             break;
                         }
-                if ((j == -1) && (i == -1))
-                    for (int j1 = Matrix.GetLength(0) - 1; j1 >= 0; j1--)
+
+                if (j == -1 && i == -1)
+                    for (var j1 = Matrix.GetLength(0) - 1; j1 >= 0; j1--)
                         if (!U1[j1] && !U2[j1])
                         {
                             j = j1;
@@ -127,24 +135,25 @@ namespace TransportAlgorithms.Algorithms
 
                 if (i != -1)
                 {
-                    for (int j1 = 0; j1 < Matrix.GetLength(0); j1++)
+                    for (var j1 = 0; j1 < Matrix.GetLength(0); j1++)
                     {
                         if (!U1[j1]) U[j1] = HelpMatr[j1, i] - V[i];
                         if (U[j1] == U[j1]) U1[j1] = true;
                     }
+
                     V2[i] = true;
                 }
 
                 if (j != -1)
                 {
-                    for (int i1 = 0; i1 < Matrix.GetLength(1); i1++)
+                    for (var i1 = 0; i1 < Matrix.GetLength(1); i1++)
                     {
                         if (!V1[i1]) V[i1] = HelpMatr[j, i1] - U[j];
                         if (V[i1] == V[i1]) V1[i1] = true;
                     }
+
                     U2[j] = true;
                 }
-
             }
         }
 
@@ -165,14 +174,15 @@ namespace TransportAlgorithms.Algorithms
 
         private double[,] MakeSMatr(double[,] M, double[] U, double[] V)
         {
-            double[,] HM = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
-            for (int i = 0; i < Matrix.GetLength(0); i++)
-            for (int j = 0; j < Matrix.GetLength(1); j++)
+            var HM = new double[Matrix.GetLength(0), Matrix.GetLength(1)];
+            for (var i = 0; i < Matrix.GetLength(0); i++)
+            for (var j = 0; j < Matrix.GetLength(1); j++)
             {
                 HM[i, j] = M[i, j];
                 if (HM[i, j] != HM[i, j])
                     HM[i, j] = Matrix[i, j] - (U[i] + V[j]);
             }
+
             return HM;
         }
 
@@ -187,45 +197,48 @@ namespace TransportAlgorithms.Algorithms
 
         private void Roll(ref double[,] m, double[,] sm)
         {
-            Point minInd = new Point();
-            double min = double.MaxValue;
-            int k = 0;
+            var minInd = new Point();
+            var min = double.MaxValue;
+            var k = 0;
             Allowed = new Point[Matrix.GetLength(0) + Matrix.GetLength(1)];
-            for (int i = 0; i < Matrix.GetLength(0); i++)
-                for (int j = 0; j < Matrix.GetLength(1); j++)
+            for (var i = 0; i < Matrix.GetLength(0); i++)
+            for (var j = 0; j < Matrix.GetLength(1); j++)
+            {
+                if (m[i, j] == m[i, j])
                 {
-                    if (m[i, j] == m[i, j])
-                    {
-                        Allowed[k].X = i;
-                        Allowed[k].Y = j;
-                        k++;
-                    }
-                    if (sm[i, j] < min)
-                    {
-                        min = sm[i, j];
-                        minInd.X = i;
-                        minInd.Y = j;
-                    }
+                    Allowed[k].X = i;
+                    Allowed[k].Y = j;
+                    k++;
                 }
+
+                if (sm[i, j] < min)
+                {
+                    min = sm[i, j];
+                    minInd.X = i;
+                    minInd.Y = j;
+                }
+            }
+
             Allowed[Allowed.Length - 1] = minInd;
-            Point[] Cycle = GetCycle((int)minInd.X, (int)minInd.Y);
-            double[] Cycles = new double[Cycle.Length];
-            Boolean[] bCycles = new Boolean[Cycle.Length];
-            for (int i = 0; i < bCycles.Length; i++)
+            var Cycle = GetCycle((int)minInd.X, (int)minInd.Y);
+            var Cycles = new double[Cycle.Length];
+            var bCycles = new bool[Cycle.Length];
+            for (var i = 0; i < bCycles.Length; i++)
                 bCycles[i] = i == bCycles.Length - 1 ? false : true;
             min = float.MaxValue;
-            for (int i = 0; i < Cycle.Length; i++)
+            for (var i = 0; i < Cycle.Length; i++)
             {
                 Cycles[i] = m[(int)Cycle[i].X, (int)Cycle[i].Y];
-                if ((i % 2 == 0) && (Cycles[i] == Cycles[i]) && (Cycles[i] < min))
+                if (i % 2 == 0 && Cycles[i] == Cycles[i] && Cycles[i] < min)
                 {
                     min = Cycles[i];
                     minInd = Cycle[i];
                 }
+
                 if (Cycles[i] != Cycles[i]) Cycles[i] = 0;
             }
-            for (int i = 0; i < Cycle.Length; i++)
-            {
+
+            for (var i = 0; i < Cycle.Length; i++)
                 if (i % 2 == 0)
                 {
                     Cycles[i] -= min;
@@ -234,34 +247,30 @@ namespace TransportAlgorithms.Algorithms
                 else
                 {
                     Cycles[i] += min;
-                    if (m[(int)Cycle[i].X, (int)Cycle[i].Y] != m[(int)Cycle[i].X, (int)Cycle[i].Y]) m[(int)Cycle[i].X, (int)Cycle[i].Y] = 0;
+                    if (m[(int)Cycle[i].X, (int)Cycle[i].Y] != m[(int)Cycle[i].X, (int)Cycle[i].Y])
+                        m[(int)Cycle[i].X, (int)Cycle[i].Y] = 0;
                     m[(int)Cycle[i].X, (int)Cycle[i].Y] += min;
                 }
-            }
+
             m[(int)minInd.X, (int)minInd.Y] = float.NaN;
         }
 
         private void ZeroToNull()
         {
-            for (int i = 0; i < Solution.GetLength(0); i++)
-            {
-                for (int j = 0; j < Solution.GetLength(1); j++)
-                {
-                    if (Solution[i, j] == 0) Solution[i, j] = float.NaN;
-                }
-            }
+            for (var i = 0; i < Solution.GetLength(0); i++)
+            for (var j = 0; j < Solution.GetLength(1); j++)
+                if (Solution[i, j] == 0)
+                    Solution[i, j] = float.NaN;
         }
 
         private void NullToZero()
         {
-            for (int i = 0; i < Solution.GetLength(0); i++)
-            {
-                for (int j = 0; j < Solution.GetLength(1); j++)
-                {
-                    if (double.IsNaN(Solution[i, j])) Solution[i, j] = 0;
-                }
-            }
+            for (var i = 0; i < Solution.GetLength(0); i++)
+            for (var j = 0; j < Solution.GetLength(1); j++)
+                if (double.IsNaN(Solution[i, j]))
+                    Solution[i, j] = 0;
         }
+
         #endregion
     }
 }

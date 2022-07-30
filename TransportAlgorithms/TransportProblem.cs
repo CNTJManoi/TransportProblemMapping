@@ -4,24 +4,19 @@ using TransportAlgorithms.Algorithms;
 namespace TransportAlgorithms
 {
     /// <summary>
-    /// Доступные методы поиска решений транспортной проблемы
+    ///     Доступные методы поиска решений транспортной проблемы
     /// </summary>
     public enum TypeAlgorithm
     {
         NorthWest,
         Potentials
     }
+
     /// <summary>
-    /// Класс, представляющий возможность получить необходимое решение транспортной задачи
+    ///     Класс, представляющий возможность получить необходимое решение транспортной задачи
     /// </summary>
     public class TransportProblem
     {
-        #region Properties
-        public double MathematicalPrice { get; private set; }
-        public NorthWest NorthWest { get; private set; }
-        public Potentials Potentials { get; private set; }
-        #endregion
-
         #region Methods
 
         public double[,] FindSolution(double[,] Matrix, int[] Suppliers, int[] Shops, TypeAlgorithm ta)
@@ -48,6 +43,15 @@ namespace TransportAlgorithms
 
             return Solution;
         }
+
+        #endregion
+
+        #region Properties
+
+        public double MathematicalPrice { get; private set; }
+        public NorthWest NorthWest { get; private set; }
+        public Potentials Potentials { get; private set; }
+
         #endregion
     }
 }

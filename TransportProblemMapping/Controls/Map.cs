@@ -2,8 +2,7 @@
 
 namespace TransportProblemMapping.Controls
 {
-    class Map : GMapControl
+    internal class Map : GMapControl
     {
-
     }
 }

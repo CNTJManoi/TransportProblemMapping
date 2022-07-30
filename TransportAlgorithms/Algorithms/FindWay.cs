@@ -4,9 +4,9 @@ using System.Windows;
 namespace TransportAlgorithms.Algorithms
 {
     /// <summary>
-    /// Класс поиска направления перемещения товара в транспортной задаче (дополнительный аспект)
+    ///     Класс поиска направления перемещения товара в транспортной задаче (дополнительный аспект)
     /// </summary>
-    class FindWay
+    internal class FindWay
     {
         private readonly Point Begining;
 

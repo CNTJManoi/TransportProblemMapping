@@ -44,7 +44,7 @@
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
                         <pg:HelpPage x:Name="InfoPage" Width="Auto"
-                                      Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                                     Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
@@ -105,7 +105,8 @@
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Information" VerticalAlignment="Stretch" Width="30" Height="30"
+                                <materialDesign:PackIcon Kind="Information" VerticalAlignment="Stretch" Width="30"
+                                                         Height="30"
                                                          Margin="0,0,10,0" />
                                 <TextBlock Text="{DynamicResource InfoButton}" Margin="0,0,20,0" TextAlignment="Center"
                                            LineHeight="1"
@@ -119,7 +120,8 @@
                                 materialDesign:RippleAssist.Feedback="#DD000000" Background="White" BorderBrush="White"
                                 HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Cursor="Hand">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="AccountGroup" VerticalAlignment="Stretch" Width="30" Height="30"
+                                <materialDesign:PackIcon Kind="AccountGroup" VerticalAlignment="Stretch" Width="30"
+                                                         Height="30"
                                                          Margin="0,0,10,0" />
                                 <TextBlock Text="{DynamicResource SettingsButton}" Margin="0,0,20,0"
                                            TextAlignment="Center" LineHeight="1"

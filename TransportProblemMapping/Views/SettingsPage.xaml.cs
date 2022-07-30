@@ -79,6 +79,7 @@ namespace TransportProblemMapping.Views
                 ShowError(ReturnString("Error7"));
                 return;
             }
+
             switch (ListBoxLanguage.SelectedIndex)
             {
                 case 0:
@@ -121,7 +122,8 @@ namespace TransportProblemMapping.Views
                 case UnitOfMeasurement.Kilometers:
                     ListBoxMeasurement.SelectedIndex = 1;
                     break;
-                case UnitOfMeasurement.Meters:;
+                case UnitOfMeasurement.Meters:
+                    ;
                     ListBoxMeasurement.SelectedIndex = 0;
                     break;
             }
@@ -146,6 +148,7 @@ namespace TransportProblemMapping.Views
                     break;
             }
         }
+
         private string ReturnString(string Attribute)
         {
             return Application.Current.FindResource(Attribute)?.ToString();
