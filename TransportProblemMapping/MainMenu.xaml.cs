@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using TransportProblemMapping.Views;
 
 namespace TransportProblemMapping
 {
@@ -41,6 +42,7 @@ namespace TransportProblemMapping
             }
             else if (name == "AboutButton" && Transitioner.SelectedIndex != 4)
             {
+                Transitioner.Items[4] = new AboutPage();
                 Transitioner.SelectedIndex = 4;
                 MenuToggleButton.IsChecked = !MenuToggleButton.IsChecked;
             }

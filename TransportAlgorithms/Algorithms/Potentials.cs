@@ -50,8 +50,9 @@ namespace TransportAlgorithms.Algorithms
         {
             double price = 0;
             for (var i = 0; i < SupArr.GetLength(0); i++)
-            for (var j = 0; j < SupArr.GetLength(1); j++)
-                price += SupArr[i, j] * mC[i, j];
+                for (var j = 0; j < SupArr.GetLength(1); j++)
+                    if (float.IsNaN(SupArr[i, j])) price += 0;
+                    else price += SupArr[i, j] * mC[i, j];
             return price;
         }
 

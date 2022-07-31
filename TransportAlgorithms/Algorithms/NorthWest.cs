@@ -60,8 +60,11 @@ namespace TransportAlgorithms.Algorithms
         {
             double price = 0;
             for (var i = 0; i < Solution.GetLength(0); i++)
-            for (var j = 0; j < Solution.GetLength(1); j++)
-                price += Solution[i, j] * Matrix[i, j];
+                for (var j = 0; j < Solution.GetLength(1); j++)
+                {
+                    if (double.IsNaN(Solution[i, j])) price += 0;
+                    else price += Solution[i, j] * Matrix[i, j];
+                }
             return price;
         }
 
@@ -82,7 +85,6 @@ namespace TransportAlgorithms.Algorithms
             int i = 0, j = 0;
             var outArr = new float[ASize, BSize];
             NanToEmpty(outArr);
-            //МЯСО
             while (!(isEmpty(Ahelp) && isEmpty(Bhelp)))
             {
                 var Dif = Math.Min(Ahelp[i], Bhelp[j]);
