@@ -206,7 +206,7 @@ namespace TransportProblemMapping.Views
                 foreach (var marker in Markers) AddMarkerOnMap(marker);
             });
             Transport = new TransportProblem();
-            var solution = Transport.FindSolution(matrix, suppliers, shops, TypeAlgorithm.Potentials);
+            var solution = Transport.FindSolution(matrix, suppliers, shops, App.Methods);
             var solutionMessage = "";
             var fuelInfo = "";
             float totalDistance = 0;
@@ -252,6 +252,7 @@ namespace TransportProblemMapping.Views
             }
 
             solutionMessage += ReturnString("Mathematical") + " " + Transport.MathematicalPrice;
+            if (App.Methods != TypeAlgorithm.Potentials) solutionMessage += "\n" + ReturnString("NotificationAboutLow");
             Dispatcher.Invoke(() =>
             {
                 SolutionBox.Text = solutionMessage + "\n" + fuelInfo;

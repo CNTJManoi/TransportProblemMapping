@@ -37,7 +37,7 @@ namespace TransportProblemMapping
             Languages.Add(new CultureInfo("en-US"));
             Measurement = UnitOfMeasurement.Meters;
             ConsiderFuel = true;
-            Methods = TypeAlgorithm.NorthWest;
+            Methods = TypeAlgorithm.Potentials;
             PriceFuel = 57.25f;
             ConsumptionFuel = 12.0f;
         }
