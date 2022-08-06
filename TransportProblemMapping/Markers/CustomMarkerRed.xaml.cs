@@ -102,15 +102,17 @@ namespace TransportProblemMapping.Markers
             {
                 MainWindow.DeleteMarker(MainWindow.MainMap.Markers.Where(x => x.Shape == this).First());
                 var title = MainWindow.NameCompany.Text;
-                var data = "Тип: " +
-                           MainWindow.TypePoint.Text +
-                           "\nТовар: " +
-                           MainWindow.CountProduct.Text;
+                var data = ReturnString("TypeButton") + ": " + MainWindow.TypePoint.Text + "\n" + ReturnString("Product") + ": " +
+                    MainWindow.CountProduct.Text;
                 title += "\n" + data;
                 Label.Content = title;
                 Marker.Shape = this;
                 MainWindow.AddMarker(this);
             }
+        }
+        private string ReturnString(string Attribute)
+        {
+            return Application.Current.FindResource(Attribute)?.ToString();
         }
     }
 }

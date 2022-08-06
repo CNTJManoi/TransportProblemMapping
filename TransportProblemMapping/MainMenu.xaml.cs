@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,7 @@ namespace TransportProblemMapping
         public MainMenu()
         {
             InitializeComponent();
+            App.LanguageChanged += LanguageChanged;
         }
 
         private void ButtonTransit_Click(object sender, RoutedEventArgs e)
@@ -50,6 +52,10 @@ namespace TransportProblemMapping
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Process.GetCurrentProcess().Kill();
+        }
+        private void LanguageChanged(object sender, EventArgs e)
+        {
+            Transitioner.Items[4] = new AboutPage();
         }
     }
 }

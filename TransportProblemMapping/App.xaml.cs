@@ -9,9 +9,6 @@ using TransportProblemMapping.Properties;
 
 namespace TransportProblemMapping
 {
-    /// <summary>
-    ///     Interaction logic for App.xaml
-    /// </summary>
     public enum UnitOfMeasurement
     {
         Meters,
