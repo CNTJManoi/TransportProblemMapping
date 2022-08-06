@@ -271,6 +271,7 @@ namespace TransportProblemMapping.Views
         {
             DialogText.Text = message;
             Dialog.IsOpen = true;
+            WaitDialog.IsOpen = false;
         }
 
         private void AddMarker(Point p)

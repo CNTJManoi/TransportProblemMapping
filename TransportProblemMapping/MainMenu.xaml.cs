@@ -42,7 +42,6 @@ namespace TransportProblemMapping
             }
             else if (name == "AboutButton" && Transitioner.SelectedIndex != 4)
             {
-                Transitioner.Items[4] = new AboutPage();
                 Transitioner.SelectedIndex = 4;
                 MenuToggleButton.IsChecked = !MenuToggleButton.IsChecked;
             }
