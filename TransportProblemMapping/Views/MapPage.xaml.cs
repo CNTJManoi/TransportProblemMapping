@@ -211,8 +211,8 @@ namespace TransportProblemMapping.Views
             var fuelInfo = "";
             float totalDistance = 0;
             for (i = 0; i < solution.GetLength(0); i++)
-            for (j = 0; j < solution.GetLength(1); j++)
-                if (solution[i, j] != 0)
+                for (j = 0; j < solution.GetLength(1); j++)
+                    if (solution[i, j] != 0 && !double.IsNaN(solution[i, j]))
                 {
                     var txtW = "";
                     var txtS = "";
