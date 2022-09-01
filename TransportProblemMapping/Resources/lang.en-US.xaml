@@ -100,7 +100,7 @@
     <v:String x:Key="LarisaN">Larisa Nikonova</v:String>
     <v:String x:Key="AlekseyD">Alexey Dzyuba</v:String>
 
-    <v:String x:Key="Group">BIST-212 student</v:String>
+    <v:String x:Key="Group">BIST-312 student</v:String>
     <v:String xml:space="preserve" x:Key="Lider1">- Development of the application idea;
 - Development of the basic logic;
 - Implementation of the cars fuel calculation functions;
@@ -111,4 +111,6 @@
     <v:String xml:space="preserve" x:Key="Programmer1">- Developing the northwest method;
 - Development of the potentials method;
 - Help develop methods for calculating routes on the map.</v:String>
+    <v:String xml:space="preserve" x:Key="InfoPage1">The main menu item is the page with the map. To go to this page you need to open the side menu by clicking the button (1) and selecting the item "Map". This item contains the following fields: the name of the warehouse / store (2), the number of items (3), the type of item (4), the map (5), the description of the found solution (6) and the service buttons for management (7). The menu is provided in the figure.</v:String>
+    <v:String xml:space="preserve" x:Key="InfoPage2">In order to start calculation of the route it is required to enter at least two points of type "Warehouse" and two points of type "Store". Setting of points is made in the "Map" menu by adding the name, quantity of goods and type of point and then clicking the left mouse button on the map at the point where the company's warehouse/shop is located. After adding, a marker will appear, which, when hovered over, indicates all the information about the point.</v:String>
 </ResourceDictionary>

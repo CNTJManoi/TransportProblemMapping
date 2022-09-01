@@ -5,5 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="/Resources/infoMap.jpg">
+            </Image>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}" Text="{DynamicResource InfoPage1}" TextAlignment="Justify" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5">
+
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}" Text="{DynamicResource InfoPage2}" TextAlignment="Justify" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5">
+
+            </TextBlock>
+        </StackPanel>
+    </Grid>
 </UserControl>
